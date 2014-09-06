@@ -19,6 +19,7 @@ GEM
       activesupport (= 4.0.2)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-oracle_enhanced-adapter (1.5.5)
     activesupport (4.0.2)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -120,6 +121,8 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-oci8 (2.1.7)
+    ruby-oci8 (2.1.7-x86-mingw32)
     rubyzip (0.9.9)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -175,6 +178,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activerecord-oracle_enhanced-adapter (~> 1.5.0)
   better_errors
   binding_of_caller
   capybara (= 2.1.0)
@@ -186,6 +190,7 @@ DEPENDENCIES
   meta_request
   rails (= 4.0.2)
   rspec-rails (= 2.13.1)
+  ruby-oci8 (~> 2.1.0)
   sass-rails (~> 4.0.0)
   sdoc
   selenium-webdriver (= 2.35.1)
