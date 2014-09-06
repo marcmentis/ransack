@@ -10,12 +10,13 @@ This README references pages in the `Rails-Toolkit Wiki` that give more detail o
 ##### Fast-track your _Rails_ application development
 * Clone `Rails-Startup` to your machine's 'projects' folder. 
 * `Basic Configuration`
-  * If you want to use all of the basic configuration, do nothing more, leave `head` at v0.04. Basic configuration includes the following installed and configured: home page, testing gems, debugging gems, mobile first responsive design gem.
-  * If you want some, but not all, of the 'basic configuration' you can `checkout` the appropriate `tag` on the `master` branch. You will get cumulatively more `basic configuration` as you `checkout` `tags` from v0.01 through v0.04.
+  * If you want to use all of the basic configuration, do nothing more, leave `head` at v0.05. Basic configuration includes the following installed and configured: home page, testing gems, debugging gems, mobile first responsive design gem, secret file.
+  * If you want some, but not all, of the 'basic configuration' you can `checkout` the appropriate `tag` on the `master` branch. You will get cumulatively more `basic configuration` as you `checkout` `tags` from v0.01 through v0.05.
     * [v0.01](https://github.com/nys-its/rails-toolkit/wiki/v0.01-StaticPages-Home-Page) Static Pages tag - Home Page, README.md (.rdoc converted to .md)
     * [v0.02](https://github.com/nys-its/rails-toolkit/wiki/v0.02-Testing) Testing tag - RSpec, Capybara, Spork, FactoryGirl
     * [v0.03](https://github.com/nys-its/rails-toolkit/wiki/v0.03-Debugging) Debugging tag - ByeBug, BetterErrors, RailsPanel
     * [v0.04](https://github.com/nys-its/rails-toolkit/wiki/v0.04-Mobile Responsive) Mobile First Responsive Design tag - Zurb Foundation
+    * [v0.05](https://github.com/nys-its/rails-toolkit/wiki/v0.05-Secret File) Supports a _secret file_ on server for sensitive information
 * `Specific Functionality` 
   * Will be added over time as useful functional needs are identified
   * Will be found on `branches`. Every `branch` will be a child of `v0.04`.
