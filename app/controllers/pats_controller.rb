@@ -6,6 +6,7 @@ class PatsController < ApplicationController
   def index
     @q = Pat.search(params[:q])
     @pats = @q.result.page(params[:page]).per(15)
+    @pat = Pat.new
   end
 
   # GET /pats/1
