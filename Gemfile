@@ -72,6 +72,9 @@ end
 # List / Table searches
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
 
+# Paginator
+gem 'kaminari'
+
 
 
 

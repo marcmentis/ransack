@@ -21,7 +21,7 @@
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
 // $base-font-size: 100%;
-$base-font-size: 12px;
+$base-font-size: 14px;
 $rem-base: $base-font-size;
 
 
@@ -520,6 +520,7 @@ $primary-color: #008CBA;
 
 // We use this to set the base for lots of form spacing and positioning styles
 // $form-spacing: rem-calc(16);
+$form-spacing: rem-calc(6);
 
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
@@ -1106,7 +1107,7 @@ $table-even-row-bg: #d5fff7;
 // $table-head-bg: #f5f5f5  ;
 		//$table-head-bg: $primary-color;
 // $table-head-font-size: rem-calc(14);
-		$table-head-font-size: rem-calc(12);
+		$table-head-font-size: rem-calc(14);
 // $table-head-font-color: #222;
 		//$table-head-font-color: #fff;
 // $table-head-font-weight: $font-weight-bold;
@@ -1120,7 +1121,7 @@ $table-even-row-bg: #d5fff7;
 		$table-row-font-size: rem-calc(12);
 // $table-row-font-color: #222;
 // $table-line-height: rem-calc(18);
-		$table-line-height: rem-calc(6);
+		$table-line-height: rem-calc(14);
 
 // These are for controlling the display and margin of tables
 // $table-display: table-cell;

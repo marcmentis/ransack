@@ -5,7 +5,7 @@ class PatsController < ApplicationController
   # GET /pats.json
   def index
     @q = Pat.search(params[:q])
-    @pats = @q.result
+    @pats = @q.result.page(params[:page]).per(15)
   end
 
   # GET /pats/1
