@@ -4,7 +4,8 @@ class PatsController < ApplicationController
   # GET /pats
   # GET /pats.json
   def index
-    @pats = Pat.all
+    @q = Pat.search(params[:q])
+    @pats = @q.result
   end
 
   # GET /pats/1

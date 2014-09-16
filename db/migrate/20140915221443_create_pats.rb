@@ -3,7 +3,7 @@ class CreatePats < ActiveRecord::Migration
     create_table :pats do |t|
       t.string :firstname
       t.string :lastname
-      t.integer :number
+      t.string :number
 
       t.timestamps
     end

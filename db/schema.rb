@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140915221443) do
   create_table "pats", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "number"
+    t.string   "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
