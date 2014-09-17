@@ -28,6 +28,7 @@
           </div>
         </div>
         <input name="commit" type="submit" value="Search" class="button tiny radius" />
+        <%= @searchNumber %> of <%= @totNumber %> total
         <%#= f.submit("Search") %>
       <% end %>
 
@@ -58,5 +59,7 @@
           <% end %>
         </tbody>
       </table>
-      <%= paginate @pats %>
+      <p><%= paginate @pats %> </p> 
+      <p></p> 
+      
   </div>
