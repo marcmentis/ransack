@@ -1,4 +1,4 @@
-<%= form_for(@pat) do |f| %>
+<%= form_for(@pat, remote: true) do |f| %>
   <% if @pat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pat.errors.count, "error") %> prohibited this pat from being saved:</h2>
@@ -24,7 +24,8 @@
     <%= f.number_field :number %>
   </div>
   <div class="actions">
-  <input name="commit" type="submit" value="Create Pat" class="button tiny radius" />
+  <input name="commit" type="submit" value="Create Pat" class="button tiny radius"  />
+
     <%#= f.submit %>
   </div>
 <% end %>

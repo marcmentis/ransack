@@ -6,7 +6,7 @@ class PatsController < ApplicationController
   def index
     @q = Pat.search(params[:q])
     @pats = @q.result.page(params[:page]).per(15)
-    @pat = Pat.new
+    # @pat = Pat.new
   end
 
   # GET /pats/1
@@ -17,10 +17,18 @@ class PatsController < ApplicationController
   # GET /pats/new
   def new
     @pat = Pat.new
+    respond_to do |format|
+      format.html { render action: 'new' }
+      format.js {}
+    end
   end
 
   # GET /pats/1/edit
   def edit
+    respond_to do |format|
+      format.html { render action: 'edit' }
+      format.js {}
+    end
   end
 
   # POST /pats
@@ -31,6 +39,7 @@ class PatsController < ApplicationController
     respond_to do |format|
       if @pat.save
         format.html { redirect_to @pat, notice: 'Pat was successfully created.' }
+        format.js {}
         format.json { render action: 'show', status: :created, location: @pat }
       else
         format.html { render action: 'new' }
@@ -44,7 +53,10 @@ class PatsController < ApplicationController
   def update
     respond_to do |format|
       if @pat.update(pat_params)
+        @q = Pat.search(params[:q])
+        @pats = @q.result.page(params[:page]).per(15)
         format.html { redirect_to @pat, notice: 'Pat was successfully updated.' }
+        format.js {}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

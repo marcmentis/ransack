@@ -1,14 +1,16 @@
 <div class="row">
   <h1>Listing pats</h1>
-  <div class="divTable">
+  <div id="divTable">
     <%= render('table') %>
   </div>
   
 
   <div class="large-6 columns">
-    <div><%= link_to 'New Pat', new_pat_path, class: "button tiny radius" %></div>
-    <div class="divForm">
-      <%= render('form') %>
+    <div>
+      <%= link_to 'New Pat', new_pat_path, class: "button tiny radius", remote: true%>
+    </div>
+    <div id="divForm">
+      <%#= render('form') %>
     </div>
   </div>
 </div>

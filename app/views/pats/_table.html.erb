@@ -52,7 +52,7 @@
               <td><%= pat.lastname %></td>
               <td><%= pat.number %></td>
               <td><%= link_to 'Show', pat %></td>
-              <td><%= link_to 'Edit', edit_pat_path(pat) %></td>
+              <td><%= link_to 'Edit', edit_pat_path(pat), remote: true %></td>
               <td><%= link_to 'Destroy', pat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
