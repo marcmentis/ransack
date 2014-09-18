@@ -30,13 +30,10 @@
 
       <!-- Left Nav Section -->
       <ul class="left">
-        <!-- <li><a href="#">Lt Item 1</a></li> -->
-        <li><%= link_to("Patients", pats_path) %></li>
-        <li><a href="/pats">Pat</a></li>
         <li class="has-dropdown">
-          <a href="#">Lt Item 2</a>
+          <a href="#">Builders</a>
           <ul class="dropdown">
-            <li><a href="#">Drop 1</a></li>
+            <li><%= link_to("Patients", pats_path) %></li>
             <li><a href="#">Drop 2</a></li>
             <li class="has-dropdown">
               <a href="#">Nested Drop</a>
@@ -49,6 +46,8 @@
             <li><a href="#">Drop 3</a></li>
           </ul>
         </li>
+        <!-- <li><a href="#">Lt Item 1</a></li> -->
+        <li><a href="#">Lt Item 2</a></li>
         <li><a href="#">Lt Item 3</a></li>
       </ul>
     </section>
