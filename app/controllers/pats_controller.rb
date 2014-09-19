@@ -8,41 +8,12 @@ class PatsController < ApplicationController
     @pats = @q.result.page(params[:page]).per(15)
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
-    @forSelect = ForSelect.all  # Where code = something, order by grouper
-    @grouped_options_array =  [
-      ['Bld82',
-        [['82/101', '82/101'],['82/102', '82/102']]
-      ],
-      ['Bld81',
-        [['81/201', '81/201'], ['81/202', '81/202'], ['81/301', '81/301']]
-      ]
-                        ]
+    @forSelect = ForSelect.all
+                          .where(code: 'pilgrim_ward')
+                          .order(option_order: :asc)  
+    @grouped_options = ForSelect.grouped_options(@forSelect)
 
-    @grouped_options_hash = {
-      'Bld82' => [['82/101', '82/101'], ['82/102', '82/102']],
-      'Bld25' => [['25/2N', '25/2N'], ['25/2S', '25/2S'], ['25/3N', '25/3N']]
-    }   
 
-    @last_grp = [@forSelect.first.grouper]
-    @this_grp = []
-    @valText = []
-    @grouped_options = []
-
-    @forSelect.each do |e|
-# byebug
-      @this_grp = [e.grouper]
-      if @last_grp == @this_grp        
-         this_valText = [e.value, e.text]
-         @valText.push this_valText
-      elsif @last_grp != @this_grp
-        @grouped_array = @last_grp.push @valText
-        @grouped_options.push @grouped_array
-        @valText = []
-      end
-      @last_grp = @this_grp
-    end                 
-
-    # @pat = Pat.new
   end
 
   # GET /pats/1
@@ -53,6 +24,10 @@ class PatsController < ApplicationController
   # GET /pats/new
   def new
     @pat = Pat.new
+        @forSelect = ForSelect.all
+                          .where(code: 'pilgrim_ward')
+                          .order(option_order: :asc)  
+        @grouped_options = ForSelect.grouped_options(@forSelect)
     respond_to do |format|
       format.html { render action: 'new' }
       format.js {}

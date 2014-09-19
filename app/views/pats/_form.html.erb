@@ -23,9 +23,21 @@
     <%= f.label :number %><br>
     <%= f.number_field :number %>
   </div>
+  <div>
+    <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
+  </div> 
+
   <div class="actions">
   <input name="commit" type="submit" value="Create Pat" class="button tiny radius"  />
+  
 
     <%#= f.submit %>
   </div>
 <% end %>
+can anything go here
+
+<%= @grouped_options %>
+
+
+
+

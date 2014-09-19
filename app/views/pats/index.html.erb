@@ -11,46 +11,11 @@
     </div>
     <div id="divForm">
       <%#= render('form') %>
+  
     </div>
-    <div>
-      <select name="city_id" id="city_id">
-        <option value="1">Lisbon</option>
-        <option value="2">Madrid</option>
-        <option value="3">Berlin</option>
-      </select>
-      <%= select_tag(:town_id, options_for_select([['Lisbon', 1], ['Madrid', 2]], 2)) %>
 
 
-      <%= select_tag(:country_id, grouped_options_for_select(@grouped_options_array), prompt: 'Please choose') %>
-    </div>
-    <div>
-        <%= collection_select(:ForSelect, :id, @forSelect, :value, :text, prompt: true) %>
-    </div>
-    <div>
-      <%#= grouped_collection_select(:ForSelect, :id, @forSelect, :grouper, :value, :text, prompt: true) %>
-    </div>
-      <div>
-        <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown tiny radius">Please select</button><br>
-          <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
-            <!-- <li><a href="#">This is a link</a></li>
-            <li><a href="#">This is another</a></li>
-            <li><a href="#">Yet another</a></li> -->
-            <%= @forSelect.each do |s| %>
-              <li><%= link_to(s.text, '#') %></li>
-            <% end %>
-          </ul>
-      </div>
 
-    <div>
-
-      @valText: <%= @valText %> <br>
-      @grouped_array: <%= @grouped_array %><br>
-      @grouped_options: <%= @grouped_options %>
-    </div>  
-
-    <div>
-      <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), prompt: 'Coded') %>
-    </div>
   
 </div>
 
