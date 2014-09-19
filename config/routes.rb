@@ -1,4 +1,6 @@
 Startup4002::Application.routes.draw do
+  resources :for_selects
+
   resources :pats
 
   get "static_pages/home"

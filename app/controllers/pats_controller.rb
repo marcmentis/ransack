@@ -8,6 +8,7 @@ class PatsController < ApplicationController
     @pats = @q.result.page(params[:page]).per(15)
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
+    @forSelect = ForSelect.all
     # @pat = Pat.new
   end
 
