@@ -46,6 +46,10 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
+    byebug (3.4.0)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     callsite (0.0.11)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -63,7 +67,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    columnize (0.8.9)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.1)
@@ -154,6 +160,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
+    slop (3.6.0)
     spork (1.0.0rc4)
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
@@ -189,6 +196,7 @@ DEPENDENCIES
   activerecord-oracle_enhanced-adapter (~> 1.5.0)
   better_errors
   binding_of_caller
+  byebug
   capybara (= 2.1.0)
   coffee-rails (~> 4.0.0)
   factory_girl_rails (= 4.2.0)
