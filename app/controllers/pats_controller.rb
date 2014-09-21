@@ -25,7 +25,7 @@ class PatsController < ApplicationController
   def new
     @pat = Pat.new
         @forSelect = ForSelect.all
-                          .where(code: 'pilgrim_ward')
+                          .where(code: 'ward')
                           .order(option_order: :asc)  
         @grouped_options = ForSelect.grouped_options(@forSelect)
     respond_to do |format|

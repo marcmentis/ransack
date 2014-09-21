@@ -9,7 +9,8 @@ namespace :db do
 
 			Pat.create!(firstname: firstname,
 						lastname: lastname,
-						number: number)
+						number: number,
+						facility_id: '1')
 		end
 	end
 end

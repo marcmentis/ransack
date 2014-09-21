@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :facility_id %><br>
+    <%= f.text_field :facility_id %>
+  </div>
+  <div class="field">
     <%= f.label :firstname %><br>
     <%= f.text_field :firstname %>
   </div>
@@ -21,11 +25,13 @@
   </div>
   <div class="field">
     <%= f.label :number %><br>
-    <%= f.number_field :number %>
+    <%= f.text_field :number %>
   </div>
   <div>
     <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
   </div> 
+
+  
 
   <div class="actions">
   <input name="commit" type="submit" value="Create Pat" class="button tiny radius"  />

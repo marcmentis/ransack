@@ -69,6 +69,6 @@ class ForSelectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def for_select_params
-      params.require(:for_select).permit(:code, :value, :text, :option_order, :grouper)
+      params.require(:for_select).permit(:code, :value, :text, :option_order, :grouper, :facility_id)
     end
 end

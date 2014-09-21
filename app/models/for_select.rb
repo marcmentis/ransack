@@ -1,4 +1,7 @@
 class ForSelect < ActiveRecord::Base
+	belongs_to :facility
+
+
 	def self.grouped_options(forSelect)
 		@last_grp = []
 	    @this_grp = []
