@@ -1,0 +1,65 @@
+<div class="large-6 columns">
+      <%= search_form_for @q do |f| %>
+        <div class="row">
+          <div class="small-4 small-offset-1 columns">
+            <!-- Search if the name field contains ... -->
+            <%= f.label(:firstname_cont, class: "right inline")  %>
+          </div>
+          <div class="small-4 left columns">
+            <%= f.search_field :firstname_cont %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-4 small-offset-1 columns">
+            <!-- Search if the name field contains ... -->
+            <%= f.label(:lastname_cont, class: "right inline")  %>
+          </div>
+          <div class="small-4 left columns">
+            <%= f.search_field :lastname_cont %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-4 small-offset-1 columns">
+            <!-- Search if the name field contains ... -->
+            <%= f.label(:number_cont, class: "right inline")  %>
+          </div>
+          <div class="small-4 left columns">
+            <%= f.search_field :number_cont %>
+          </div>
+        </div>
+        <input name="commit" type="submit" value="Search" class="button tiny radius" />
+        <%= @searchNumber %> of <%= @totNumber %> total
+        <%#= f.submit("Search") %>
+      <% end %>
+
+
+      <table>
+        <thead>
+          <tr>
+            <%#= content_tag :th, sort_link(@q, :firstname) %>
+            <th><%= sort_link(@q, :firstname) %></th>
+            <th><%= sort_link(@q, :lastname) %></th>
+            <th><%= sort_link(@q, :number) %></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @pats.each do |pat| %>
+            <tr>
+              <td><%= pat.firstname %></td>
+              <td><%= pat.lastname %></td>
+              <td><%= pat.number %></td>
+              <td><%= link_to 'Show', pat %></td>
+              <td><%= link_to 'Edit', edit_pat_path(pat), remote: true %></td>
+              <td><%= link_to 'Destroy', pat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><%= paginate @pats %> </p> 
+      <p></p> 
+      
+  </div>

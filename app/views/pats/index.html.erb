@@ -1,31 +1,25 @@
-<h1>Listing pats</h1>
+<div class="row">
+  <h1>Listing pats</h1>
+  <div id="divTable">
+    <%= render('table') %>
+  </div>
+  
 
-<table>
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Number</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <div class="large-6 columns">
+    <div>
+      <%= link_to 'New Pat', new_pat_path, class: "button tiny radius", remote: true%>
+    </div>
+    <div id="divForm">
+      <%#= render('form') %>
+  
+    </div>
 
-  <tbody>
-    <% @pats.each do |pat| %>
-      <tr>
-        <td><%= pat.firstname %></td>
-        <td><%= pat.lastname %></td>
-        <td><%= pat.number %></td>
-        <td><%= link_to 'Show', pat %></td>
-        <td><%= link_to 'Edit', edit_pat_path(pat) %></td>
-        <td><%= link_to 'Destroy', pat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Pat', new_pat_path %>
+  
+</div>
+
+
+
+
+

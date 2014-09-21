@@ -4,7 +4,16 @@ class PatsController < ApplicationController
   # GET /pats
   # GET /pats.json
   def index
-    @pats = Pat.all
+    @q = Pat.search(params[:q])
+    @pats = @q.result.page(params[:page]).per(15)
+    @totNumber = Pat.all.count
+    @searchNumber = @q.result.count
+    @forSelect = ForSelect.all
+                          .where(code: 'pilgrim_ward')
+                          .order(option_order: :asc)  
+    @grouped_options = ForSelect.grouped_options(@forSelect)
+
+
   end
 
   # GET /pats/1
@@ -15,10 +24,22 @@ class PatsController < ApplicationController
   # GET /pats/new
   def new
     @pat = Pat.new
+        @forSelect = ForSelect.all
+                          .where(code: 'pilgrim_ward')
+                          .order(option_order: :asc)  
+        @grouped_options = ForSelect.grouped_options(@forSelect)
+    respond_to do |format|
+      format.html { render action: 'new' }
+      format.js {}
+    end
   end
 
   # GET /pats/1/edit
   def edit
+    respond_to do |format|
+      format.html { render action: 'edit' }
+      format.js {}
+    end
   end
 
   # POST /pats
@@ -29,6 +50,7 @@ class PatsController < ApplicationController
     respond_to do |format|
       if @pat.save
         format.html { redirect_to @pat, notice: 'Pat was successfully created.' }
+        format.js {}
         format.json { render action: 'show', status: :created, location: @pat }
       else
         format.html { render action: 'new' }
@@ -42,7 +64,10 @@ class PatsController < ApplicationController
   def update
     respond_to do |format|
       if @pat.update(pat_params)
+        @q = Pat.search(params[:q])
+        @pats = @q.result.page(params[:page]).per(15)
         format.html { redirect_to @pat, notice: 'Pat was successfully updated.' }
+        format.js {}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

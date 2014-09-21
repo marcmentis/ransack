@@ -15,6 +15,7 @@ gem 'rails', '4.0.2'
 	  gem 'sqlite3'
 	  gem 'rspec-rails', '2.13.1'  #access to RSpec generators
 	  gem 'faker'
+	  gem 'byebug'
 	end
 
 	# Use Oracle in development i.e., primary or legacy db's
@@ -71,6 +72,9 @@ end
 
 # List / Table searches
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
+
+# Paginator
+gem 'kaminari'
 
 
 
