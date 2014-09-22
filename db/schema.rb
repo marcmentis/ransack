@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921222556) do
+ActiveRecord::Schema.define(version: 20140922015118) do
 
   create_table "facilities", force: true do |t|
     t.string   "name"
@@ -26,20 +26,7 @@ ActiveRecord::Schema.define(version: 20140921222556) do
     t.string   "grouper"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "facility_id"
     t.integer  "option_order"
-  end
-
-  add_index "for_selects", ["facility_id"], name: "index_for_selects_on_facility_id"
-
-  create_table "for_sessions", force: true do |t|
-    t.string   "code"
-    t.string   "value"
-    t.string   "text"
-    t.string   "order"
-    t.string   "grouper"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "pats", force: true do |t|
