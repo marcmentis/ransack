@@ -9,6 +9,7 @@ gem 'rails', '4.0.2'
 	  gem 'better_errors' # Better error page
 	  gem 'binding_of_caller' # Adds functionality to better_errors
 	  gem 'meta_request'  # Works with RailsPanel in Chrome (Add RailsPanel from google store)
+	  gem 'rails-erd'	# Drawing Entity Relationship Diagrams using graphviz
 	end
 
 	group :development, :test do
