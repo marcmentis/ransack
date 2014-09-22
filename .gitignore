@@ -17,3 +17,6 @@
 
 # Ignore the Secret Configuration.yml file
 /config/application.yml
+
+# Ignore erd files
+erd*
