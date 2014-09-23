@@ -17,7 +17,7 @@ $(document).on "ready", ->
 # BUTTONS
   $('#sWard').change ->
     value = $('#sWard').val()
-    alert(value)
+    document.getElementById('tWard').value = value
 
   # $('#bSubmit').click ->
   #   alert 'bSubmit'

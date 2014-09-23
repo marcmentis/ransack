@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922201825) do
+ActiveRecord::Schema.define(version: 20140923224808) do
 
   create_table "facilities", force: true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140922201825) do
     t.date     "doa"
     t.date     "dob"
     t.date     "dod"
+    t.string   "ward"
   end
 
   add_index "pats", ["facility_id"], name: "index_pats_on_facility_id"

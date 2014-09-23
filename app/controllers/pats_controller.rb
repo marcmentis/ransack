@@ -4,8 +4,11 @@ class PatsController < ApplicationController
   # GET /pats
   # GET /pats.json
   def index
-    @q = Pat.search(params[:q])
-    @pats = @q.result.page(params[:page]).per(15)
+     # @myPat = Pat.includes(:for_select)
+     # @q = @myPat.search(params[:q])
+     @q = Pat.search(params[:q])   
+     @pats = @q.result.page(params[:page]).per(15)
+
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
 
@@ -96,6 +99,6 @@ class PatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pat_params
-      params.require(:pat).permit(:firstname, :lastname, :number, :facility_id, :doa, :dod, :dob)
+      params.require(:pat).permit(:firstname, :lastname, :number, :facility_id, :ward, :doa, :dod, :dob)
     end
 end

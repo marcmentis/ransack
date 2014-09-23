@@ -1,4 +1,4 @@
-<div class="large-8 columns">
+<div class="large-9 columns">
       <%= search_form_for @q do |f| %>
         <div class="row">
           <div class="small-4 small-offset-1 columns">
@@ -38,6 +38,7 @@
           <tr>
             <%#= content_tag :th, sort_link(@q, :firstname) %>
             <th>FID</th>
+            <th>Ward</th>
             <th><%= sort_link(@q, :firstname) %></th>
             <th><%= sort_link(@q, :lastname) %></th>
             <th><%= sort_link(@q, :number) %></th>
@@ -52,6 +53,7 @@
           <% @pats.each do |pat| %>
             <tr>
               <td><%= pat.facility_id %></td>
+              <td><%= pat.ward %></td>
               <td><%= pat.firstname %></td>
               <td><%= pat.lastname %></td>
               <td><%= pat.number %></td>
