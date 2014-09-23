@@ -2,20 +2,22 @@
   <h1>Listing pats</h1>
   <div id="divTable">
     <%= render('table') %>
-  </div>
+  </div> 
   
 
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <div>
-      <%= link_to 'New Pat', new_pat_path, class: "button tiny radius", remote: true%>
+      <%= link_to 'New Pat', new_pat_path, class: "button tiny radius", id: 'bNew', remote: true%>
     </div>
     <div id="divForm">
-      <%#= render('form') %>
-  
+      <%#= render('form') %> 
     </div>
 
-
-
+  <div id="divGroupSelectWrapper">
+    <div id="divGroupSelect">
+      <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), id: 'sWard', prompt: 'Choose Ward') %>
+    </div> 
+  </div>
   
 </div>
 

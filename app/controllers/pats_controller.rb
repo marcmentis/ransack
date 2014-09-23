@@ -8,12 +8,13 @@ class PatsController < ApplicationController
     @pats = @q.result.page(params[:page]).per(15)
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
-    @forSelect = ForSelect.all
-                          .where(code: 'pilgrim_ward')
+
+    @pat = Pat.new
+        @forSelect = ForSelect.all
+                          .where(code: 'ward')
                           .order(option_order: :asc)  
-    @grouped_options = ForSelect.grouped_options(@forSelect)
-
-
+        # @grouped_options = ForSelect.grouped_options(@forSelect)
+        @grouped_options = GroupedOptions.grouped_options(@forSelect)
   end
 
   # GET /pats/1
@@ -27,7 +28,8 @@ class PatsController < ApplicationController
         @forSelect = ForSelect.all
                           .where(code: 'ward')
                           .order(option_order: :asc)  
-        @grouped_options = ForSelect.grouped_options(@forSelect)
+        # @grouped_options = ForSelect.grouped_options(@forSelect)
+        @grouped_options = GroupedOptions.grouped_options(@forSelect)
     respond_to do |format|
       format.html { render action: 'new' }
       format.js {}
@@ -94,6 +96,6 @@ class PatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pat_params
-      params.require(:pat).permit(:firstname, :lastname, :number)
+      params.require(:pat).permit(:firstname, :lastname, :number, :facility_id, :doa, :dod, :dob)
     end
 end

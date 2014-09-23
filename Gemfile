@@ -77,6 +77,10 @@ gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
 # Paginator
 gem 'kaminari'
 
+# Add my GroupedOptions gem for Making Grouped Selects from non-associated database
+# gem 'grouped_options', path: '~/projects/gems/grouped_options'
+gem 'grouped_options', git: 'git@github.com:marcmentis/grouped_options.git'
+
 
 
 

@@ -10,6 +10,12 @@ GIT
       i18n
       polyamorous (~> 1.1)
 
+GIT
+  remote: git@github.com:marcmentis/grouped_options.git
+  revision: e4b0c09bc45bf3799df52cdb4bc17c734315c1c1
+  specs:
+    grouped_options (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -209,6 +215,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.2.0)
   faker
   foundation-rails
+  grouped_options!
   jbuilder (~> 1.2)
   jquery-rails
   kaminari

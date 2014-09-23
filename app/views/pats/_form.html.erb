@@ -26,19 +26,22 @@
     <%= f.label :number %><br>
     <%= f.text_field :number %>
   </div>
+  <div id="divAppendGroupSelect"></div>
   <div>
-    <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
-  </div> 
+    <%= f.label :doa %>
+    <%= f.date_select :doa %>
+  </div>
 
   
 
   <div class="actions">
-  <input name="commit" type="submit" value="Create Pat" class="button tiny radius"  />
+  <!-- <input name="commit" type="submit" value="Create Pat" class="button tiny radius"  /> -->
   
 
-    <%#= f.submit %>
+    <%= f.submit 'submit', class: 'button tiny radius', id: 'bSubmit' %>
   </div>
 <% end %>
+
 
 
 
