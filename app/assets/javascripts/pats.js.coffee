@@ -2,7 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+# jQuery.fn.testFunction = ->
+#   alert 'In fn'
+#   this
+
+
+
 $(document).on "ready", ->
+  $('#divIndexHideWrapper').hide()
+  # $('#new_pat').testFunction()
+
+
+
   # alert('rails change')
   # $('#ward_id').click ->
   #   alert('in click')
@@ -14,30 +25,41 @@ $(document).on "ready", ->
 
 # STYLE
 
+
 # BUTTONS
+  # sWard ALWAYS in SCOPE as appended to non-changing DOM when forms change
   $('#sWard').change ->
     value = $('#sWard').val()
-    document.getElementById('tWard').value = value
+    # alert(value)
+    $('#tWard').val(value)
 
-  # $('#bSubmit').click ->
-  #   alert 'bSubmit'
-  #   return 'false'
+
 #FORMS
-  $('#bNew').on("ajax:beforeSend", (e, data, status, xhr) ->
-      # alert 'this is before send'
-    ).on("ajax:success", (e, data, status ,xhr) ->
-      # alert 'after success'
-      document.getElementById('divAppendGroupSelect').appendChild(document.getElementById('divGroupSelect'));
-    ).bind "ajax:error", (e, xhr, status, error) ->
-      alert 'this was a failure'
+  # bNew ALWAYS in SCOPE as never overwritten
+  # $('#bNew').on("ajax:beforeSend", (e, data, status, xhr) ->
+  #     alert 'this is before send'
+  #   ).on("ajax:success", (e, data, status ,xhr) ->
+  #     alert 'after success'
+  #     # $('#sWard').appendTo('#divFormSelectWrapper')
+  #   ).bind "ajax:error", (e, xhr, status, error) ->
+  #     alert 'this was a bNew failure'
 
-  $('.lEdit').on("ajax:beforeSend", (e, data, status, xhr) ->
-      alert 'this is before send'
-    ).on("ajax:success", (e, data, status ,xhr) ->
-      # alert 'after success'  
-      document.getElementById('divAppendGroupSelect').appendChild(document.getElementById('divGroupSelect'));  
-    ).bind "ajax:error", (e, xhr, status, error) ->
-      alert 'this was a failure'
+# LOSES SCOPE AFTER FIRST TABLE AJAX CALL
+  # $('.lEdit').on("ajax:beforeSend", (e, data, status, xhr) ->
+  #     alert 'this is before send'
+  #   ).on("ajax:success", (e, data, status ,xhr) ->
+  #     alert 'after success' 
+  #     $('#sWard').appendTo('#divFormSelectWrapper')
+  #   ).bind "ajax:error", (e, xhr, status, error) ->
+  #     alert 'this was a lEdit failure'
+
+# NEVER IN SCOPE
+  # $('.edit_pat').on("ajax:beforeSend", (e, data, status, xhr) ->
+  #   alert 'this is before form send'
+  # ).on("ajax:success", (e, data, status ,xhr) ->
+  #   alert 'after form success' 
+  # ).bind "ajax:error", (e, xhr, status, error) ->
+  #   alert 'this was a lEdit failure'
 
   # $('#bSubmit').on("ajax:beforeSend", (e, data, status, xhr) ->
   #     alert 'this is before bSubmit send'
@@ -46,8 +68,5 @@ $(document).on "ready", ->
   #   ).bind "ajax:error", (e, xhr, status, error) ->
   #     alert 'this was a failure'       
 
-# RUN ON PAGE READY
-  # alert 'page ready'
-  #$('#divForm').hide()
 
 

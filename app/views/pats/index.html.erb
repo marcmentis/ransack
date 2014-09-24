@@ -13,11 +13,10 @@
       <%#= render('form') %> 
     </div>
 
-  <div id="divGroupSelectWrapper">
-    <div id="divGroupSelect">
-      <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), id: 'sWard', prompt: 'Choose Ward') %>
-    </div> 
+  <div id="divIndexHideWrapper">
+  <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), id: 'sWard', prompt: 'Choose Ward') %>
   </div>
+  
   
 </div>
 

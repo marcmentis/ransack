@@ -18,6 +18,11 @@ class PatsController < ApplicationController
                           .order(option_order: :asc)  
         # @grouped_options = ForSelect.grouped_options(@forSelect)
         @grouped_options = GroupedOptions.grouped_options(@forSelect)
+
+        respond_to do |format|
+          format.html { render action: 'index' }
+          format.js {}
+        end
   end
 
   # GET /pats/1
@@ -51,6 +56,12 @@ class PatsController < ApplicationController
   # POST /pats.json
   def create
     @pat = Pat.new(pat_params)
+
+    @forSelect = ForSelect.all
+                          .where(code: 'ward')
+                          .order(option_order: :asc)  
+    # @grouped_options = ForSelect.grouped_options(@forSelect)
+    @grouped_options = GroupedOptions.grouped_options(@forSelect)
 
     respond_to do |format|
       if @pat.save
@@ -87,6 +98,7 @@ class PatsController < ApplicationController
     @pat.destroy
     respond_to do |format|
       format.html { redirect_to pats_url }
+      format.js {}
       format.json { head :no_content }
     end
   end
