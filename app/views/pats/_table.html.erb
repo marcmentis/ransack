@@ -40,15 +40,19 @@
                 <%= f.search_field :ward_cont %>
               </div>
 
-              <div class="small-1 column">
-                <%= f.label(:doa_cont, "DOA", class: "right inline", data: {tooltip:true}, title: "Date of Admission Between")  %>
+              <div class="small-2 column">
+                <%= f.label(:doa_cont, "DOA tween", class: "right inline", title: "DOA between", data: {tooltip: true})  %>
               </div>
               <div class="small-3 left columns">
                 <%#= f.date_field :doa_cont %>
                 <%#= f.date_select :doa_cont %>
                 <%= f.search_field :doa_gteq%>
-                <%= f.label :doa, "and" %>
-                <%= f.search_field :doa_lteq %>
+              </div>
+              <div class="small-1 column ">
+                <%= f.label :doa, "and", class: "right inline" %>
+              </div>
+              <div class="small-3 left columns">
+                <%= f.search_field :doa_lteq %> 
               </div>         
             </div>
           </div>
