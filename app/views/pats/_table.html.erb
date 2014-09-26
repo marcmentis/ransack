@@ -1,58 +1,71 @@
 <div class="large-9 columns">
+<div class="panel">
   <div class="panel callout radius">
      <%= search_form_for @q, remote: true do |f| %>
-        <div class="row">
-              <div class="small-2 columns">
-                <!-- Search if the name field contains ... -->
-                <%= f.label(:firstname_cont, 'FirstName', class: "right inline")  %>               
+        <div class="row collapse">
+          <div class="small-2 columns" >
+            <div class="small-2 columns">
+                <%= f.submit class: 'button tiny radius' %>           
+              </div>
+          </div>
+
+          <div class="small-10 columns">
+            <div class="row collapse">
+                <div class="small-1 columns">
+                  <%= f.label(:firstname_cont, 'First', class: "right inline")  %>  
+                </div>
+                <div class="small-2 left columns">
+                      <%= f.search_field :firstname_cont %>
+                </div>
+                
+                <div class="small-1 columns">
+                  <%= f.label(:lastname_cont, "Last", class: " right inline")  %>
+                </div>
+                <div class="small-2 left columns">
+                  <%= f.search_field :lastname_cont %>
+                </div>
+
+                <div class="small-1 columns">
+                  <%= f.label(:number_cont, "C #", class: " right inline", title: "C Number", data: {tooltip: true})  %>
+                </div>
+                <div class="small-2 left columns">
+                  <%= f.search_field :number_cont %>
+                </div>
+            </div>
+            <div class="row collapse">
+              <div class="small-1 columns">
+                <%= f.label(:ward_cont, "Ward", class: "right inline")  %>
               </div>
               <div class="small-2 left columns">
-                    <%= f.search_field :firstname_cont, class: "left inline" %>
+                <%= f.search_field :ward_cont %>
               </div>
+
+              <div class="small-1 column">
+                <%= f.label(:doa_cont, "DOA", class: "right inline", data: {tooltip:true}, title: "Date of Admission")  %>
+              </div>
+              <div class="small-4 left columns">
+                <%= f.date_field :doa_cont %>
+              </div>         
+            </div>
+          </div>
+              
 
               
-              <div class="small-2 columns">
-                <!-- Search if the name field contains ... -->
-                <%= f.label(:lastname_cont, "Lastname", class: "right inline")  %>
-              </div>
-              <div class="small-2 left columns">
-                <%= f.search_field :lastname_cont %>
-              </div>
-              <div class="small-2 columns">
-                <!-- Search if the name field contains ... -->
-                <%= f.label(:number_cont, "Number", class: "right inline")  %>
-              </div>
-              <div class="small-2 left columns">
-                <%= f.search_field :number_cont %>
-              </div>
         </div>
-        <div class="row">
-          
-        </div>
-        <div class="row">
-          
-        </div>
-        <div class="row">
-          <div class="small-2 columns">
-            <%= f.submit class: 'button tiny radius' %>           
-          </div>
-          <div class="small-2 columns">
-            <%= link_to 'New Pat', new_pat_path, class: "button tiny radius", id: 'bNew', remote: true%>
-          </div>
-        </div>
+        
+
+        
       <% end %>
   </div>
-     
-
-
+  
   <table>
     <thead>
       <tr class="tableHeader">
         <!-- <th>FID</th> -->
-        <th>Ward</th>
         <th><%= sort_link(@q, :firstname) %></th>
         <th><%= sort_link(@q, :lastname) %></th>
         <th><%= sort_link(@q, :number) %></th>
+        <th>Ward</th>
         <th><%= sort_link(@q, :doa, "Admission") %></th>
         <th><%= sort_link(@q, :dob, "Birth") %></th>
         <th><%= sort_link(@q, :dod, "Discharge") %></th>
@@ -65,10 +78,10 @@
       <% @pats.each do |pat| %>
         <tr>
           <!-- <td><%#= pat.facility_id %></td> -->
-          <td><%= pat.ward %></td>
           <td><%= pat.firstname %></td>
           <td><%= pat.lastname %></td>
           <td><%= pat.number %></td>
+          <td><%= pat.ward %></td>
           <td><%= pat.doa %></td>
           <td><%= pat.dob %></td>
           <td><%= pat.dod %></td>
@@ -86,5 +99,6 @@
         </td>
       </tr>
     </tbody> 
-  </table>     
+  </table> 
+</div>       
 </div>

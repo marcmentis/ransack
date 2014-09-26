@@ -40,7 +40,7 @@ class PatsController < ApplicationController
         @grouped_options = GroupedOptions.grouped_options(@forSelect)
     respond_to do |format|
       format.html { render action: 'new' }
-      format.js {}
+      format.js { render "new_edit" }
     end
   end
 
@@ -48,7 +48,7 @@ class PatsController < ApplicationController
   def edit
     respond_to do |format|
       format.html { render action: 'edit' }
-      format.js {}
+      format.js { render "new_edit" }
     end
   end
 
@@ -66,7 +66,7 @@ class PatsController < ApplicationController
     respond_to do |format|
       if @pat.save
         format.html { redirect_to @pat, notice: 'Pat was successfully created.' }
-        format.js {}
+        format.js {render "update_create"}
         format.json { render action: 'show', status: :created, location: @pat }
       else
         format.html { render action: 'new' }
@@ -83,7 +83,7 @@ class PatsController < ApplicationController
         @q = Pat.search(params[:q])
         @pats = @q.result.page(params[:page]).per(15)
         format.html { redirect_to @pat, notice: 'Pat was successfully updated.' }
-        format.js {}
+        format.js {render "update_create"}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
