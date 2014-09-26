@@ -19,17 +19,17 @@
                 </div>
                 
                 <div class="small-1 columns">
-                  <%= f.label(:lastname_cont, "Last", class: " right inline")  %>
+                  <%= f.label(:lastname_start, "Last", class: " right inline")  %>
                 </div>
                 <div class="small-2 left columns">
-                  <%= f.search_field :lastname_cont %>
+                  <%= f.search_field :lastname_start %>
                 </div>
 
                 <div class="small-1 columns">
-                  <%= f.label(:number_cont, "C #", class: " right inline", title: "C Number", data: {tooltip: true})  %>
+                  <%= f.label(:number_start, "C #", class: " right inline", title: "C Number", data: {tooltip: true})  %>
                 </div>
                 <div class="small-2 left columns">
-                  <%= f.search_field :number_cont %>
+                  <%= f.search_field :number_start %>
                 </div>
             </div>
             <div class="row collapse">
@@ -41,10 +41,14 @@
               </div>
 
               <div class="small-1 column">
-                <%= f.label(:doa_cont, "DOA", class: "right inline", data: {tooltip:true}, title: "Date of Admission")  %>
+                <%= f.label(:doa_cont, "DOA", class: "right inline", data: {tooltip:true}, title: "Date of Admission Between")  %>
               </div>
-              <div class="small-4 left columns">
-                <%= f.date_field :doa_cont %>
+              <div class="small-3 left columns">
+                <%#= f.date_field :doa_cont %>
+                <%#= f.date_select :doa_cont %>
+                <%= f.search_field :doa_gteq%>
+                <%= f.label :doa, "and" %>
+                <%= f.search_field :doa_lteq %>
               </div>         
             </div>
           </div>

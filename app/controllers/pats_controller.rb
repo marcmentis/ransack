@@ -12,17 +12,18 @@ class PatsController < ApplicationController
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
 
-    @pat = Pat.new
-        @forSelect = ForSelect.all
-                          .where(code: 'ward')
-                          .order(option_order: :asc)  
-        # @grouped_options = ForSelect.grouped_options(@forSelect)
-        @grouped_options = GroupedOptions.grouped_options(@forSelect)
+    # @ForSelect needed as select_tag (sWard) instantiated on index.html.erb
+    # @pat = Pat.new
+    @forSelect = ForSelect.all
+                      .where(code: 'ward')
+                      .order(option_order: :asc)  
+    # @grouped_options = ForSelect.grouped_options(@forSelect)
+    @grouped_options = GroupedOptions.grouped_options(@forSelect)
 
-        respond_to do |format|
-          format.html { render action: 'index' }
-          format.js {}
-        end
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.js {}
+    end
   end
 
   # GET /pats/1
@@ -33,11 +34,11 @@ class PatsController < ApplicationController
   # GET /pats/new
   def new
     @pat = Pat.new
-        @forSelect = ForSelect.all
-                          .where(code: 'ward')
-                          .order(option_order: :asc)  
-        # @grouped_options = ForSelect.grouped_options(@forSelect)
-        @grouped_options = GroupedOptions.grouped_options(@forSelect)
+        # @forSelect = ForSelect.all
+        #                   .where(code: 'ward')
+        #                   .order(option_order: :asc)  
+        # # @grouped_options = ForSelect.grouped_options(@forSelect)
+        # @grouped_options = GroupedOptions.grouped_options(@forSelect)
     respond_to do |format|
       format.html { render action: 'new' }
       format.js { render "new_edit" }
@@ -57,11 +58,11 @@ class PatsController < ApplicationController
   def create
     @pat = Pat.new(pat_params)
 
-    @forSelect = ForSelect.all
-                          .where(code: 'ward')
-                          .order(option_order: :asc)  
-    # @grouped_options = ForSelect.grouped_options(@forSelect)
-    @grouped_options = GroupedOptions.grouped_options(@forSelect)
+    # @forSelect = ForSelect.all
+    #                       .where(code: 'ward')
+    #                       .order(option_order: :asc)  
+    # # @grouped_options = ForSelect.grouped_options(@forSelect)
+    # @grouped_options = GroupedOptions.grouped_options(@forSelect)
 
     respond_to do |format|
       if @pat.save
