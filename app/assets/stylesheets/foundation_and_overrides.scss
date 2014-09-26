@@ -549,6 +549,7 @@ $form-spacing: rem-calc(6);
 // $fieldset-border-width: 1px;
 // $fieldset-border-color: #ddd;
 // $fieldset-padding: rem-calc(20);
+$fieldset-padding: rem-calc(5);
 // $fieldset-margin: rem-calc(18 0);
 
 // We use these to style the legends when you use them
@@ -825,15 +826,15 @@ $form-spacing: rem-calc(6);
 // $panel-bg: scale-color(#fff, $lightness: -5%);
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
-
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: -11%;
 // $panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor);
 
 // We use these to set default inner padding and bottom margin
 // $panel-margin-bottom: rem-calc(20);
+		$panel-margin-bottom: rem-calc(10);
 // $panel-padding: rem-calc(20);
-
+		$panel-padding: rem-calc(10);
 // We use these to set default font colors
 // $panel-font-color: #333;
 // $panel-font-color-alt: #fff;
@@ -1095,7 +1096,7 @@ $form-spacing: rem-calc(6);
 // These control the background color for the table and even rows
 // $table-bg: #fff;
 // $table-even-row-bg: #f9f9f9  ;
-$table-even-row-bg: #d5fff7;
+$table-even-row-bg: #e5f9ff;
 
 
 // These control the table cell border style
@@ -1121,7 +1122,7 @@ $table-even-row-bg: #d5fff7;
 		$table-row-font-size: rem-calc(12);
 // $table-row-font-color: #222;
 // $table-line-height: rem-calc(18);
-		$table-line-height: rem-calc(14);
+		$table-line-height: rem-calc(16);
 
 // These are for controlling the display and margin of tables
 // $table-display: table-cell;

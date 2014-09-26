@@ -11,26 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918235528) do
+ActiveRecord::Schema.define(version: 20140923224808) do
+
+  create_table "facilities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "for_selects", force: true do |t|
     t.string   "code"
     t.string   "value"
     t.string   "text"
-    t.string   "option_order"
     t.string   "grouper"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "for_sessions", force: true do |t|
-    t.string   "code"
-    t.string   "value"
-    t.string   "text"
-    t.string   "order"
-    t.string   "grouper"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "option_order"
+    t.integer  "facility_id"
   end
 
   create_table "pats", force: true do |t|
@@ -39,6 +36,13 @@ ActiveRecord::Schema.define(version: 20140918235528) do
     t.string   "number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "facility_id"
+    t.date     "doa"
+    t.date     "dob"
+    t.date     "dod"
+    t.string   "ward"
   end
+
+  add_index "pats", ["facility_id"], name: "index_pats_on_facility_id"
 
 end

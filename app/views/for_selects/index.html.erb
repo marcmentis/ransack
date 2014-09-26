@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Code</th>
       <th>Value</th>
       <th>Text</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @for_selects.each do |for_select| %>
       <tr>
+        <td><%= for_select.id %></td>
         <td><%= for_select.code %></td>
         <td><%= for_select.value %></td>
         <td><%= for_select.text %></td>

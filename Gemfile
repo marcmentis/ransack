@@ -9,6 +9,7 @@ gem 'rails', '4.0.2'
 	  gem 'better_errors' # Better error page
 	  gem 'binding_of_caller' # Adds functionality to better_errors
 	  gem 'meta_request'  # Works with RailsPanel in Chrome (Add RailsPanel from google store)
+	  gem 'rails-erd'	# Drawing Entity Relationship Diagrams using graphviz
 	end
 
 	group :development, :test do
@@ -75,6 +76,10 @@ gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
 
 # Paginator
 gem 'kaminari'
+
+# Add my GroupedOptions gem for Making Grouped Selects from non-associated database
+# gem 'grouped_options', path: '~/projects/gems/grouped_options'
+gem 'grouped_options', git: 'git@github.com:marcmentis/grouped_options.git'
 
 
 

@@ -1,0 +1,9 @@
+$('#sWard').appendTo('#divIndexHideWrapper');
+$('#divForm').html("<%= j render('form') %>");
+$('#sWard').appendTo('#divFormSelectWrapper');
+$('#bNew').hide();
+$('#bCancel').click(function(){
+	$('#sWard').appendTo('#divIndexHideWrapper');
+	$('#divForm').html("");
+	$('#bNew').show();
+});

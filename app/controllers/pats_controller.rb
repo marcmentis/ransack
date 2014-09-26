@@ -4,16 +4,26 @@ class PatsController < ApplicationController
   # GET /pats
   # GET /pats.json
   def index
-    @q = Pat.search(params[:q])
-    @pats = @q.result.page(params[:page]).per(15)
+     # @myPat = Pat.includes(:for_select)
+     # @q = @myPat.search(params[:q])
+     @q = Pat.search(params[:q])   
+     @pats = @q.result.page(params[:page]).per(15)
+
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
+
+    # @ForSelect needed as select_tag (sWard) instantiated on index.html.erb
+    # @pat = Pat.new
     @forSelect = ForSelect.all
-                          .where(code: 'pilgrim_ward')
-                          .order(option_order: :asc)  
-    @grouped_options = ForSelect.grouped_options(@forSelect)
+                      .where(code: 'ward')
+                      .order(option_order: :asc)  
+    # @grouped_options = ForSelect.grouped_options(@forSelect)
+    @grouped_options = GroupedOptions.grouped_options(@forSelect)
 
-
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.js {}
+    end
   end
 
   # GET /pats/1
@@ -24,13 +34,14 @@ class PatsController < ApplicationController
   # GET /pats/new
   def new
     @pat = Pat.new
-        @forSelect = ForSelect.all
-                          .where(code: 'pilgrim_ward')
-                          .order(option_order: :asc)  
-        @grouped_options = ForSelect.grouped_options(@forSelect)
+        # @forSelect = ForSelect.all
+        #                   .where(code: 'ward')
+        #                   .order(option_order: :asc)  
+        # # @grouped_options = ForSelect.grouped_options(@forSelect)
+        # @grouped_options = GroupedOptions.grouped_options(@forSelect)
     respond_to do |format|
       format.html { render action: 'new' }
-      format.js {}
+      format.js { render "new_edit" }
     end
   end
 
@@ -38,7 +49,7 @@ class PatsController < ApplicationController
   def edit
     respond_to do |format|
       format.html { render action: 'edit' }
-      format.js {}
+      format.js { render "new_edit" }
     end
   end
 
@@ -47,10 +58,16 @@ class PatsController < ApplicationController
   def create
     @pat = Pat.new(pat_params)
 
+    # @forSelect = ForSelect.all
+    #                       .where(code: 'ward')
+    #                       .order(option_order: :asc)  
+    # # @grouped_options = ForSelect.grouped_options(@forSelect)
+    # @grouped_options = GroupedOptions.grouped_options(@forSelect)
+
     respond_to do |format|
       if @pat.save
         format.html { redirect_to @pat, notice: 'Pat was successfully created.' }
-        format.js {}
+        format.js {render "update_create"}
         format.json { render action: 'show', status: :created, location: @pat }
       else
         format.html { render action: 'new' }
@@ -67,7 +84,7 @@ class PatsController < ApplicationController
         @q = Pat.search(params[:q])
         @pats = @q.result.page(params[:page]).per(15)
         format.html { redirect_to @pat, notice: 'Pat was successfully updated.' }
-        format.js {}
+        format.js {render "update_create"}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -82,6 +99,7 @@ class PatsController < ApplicationController
     @pat.destroy
     respond_to do |format|
       format.html { redirect_to pats_url }
+      format.js {}
       format.json { head :no_content }
     end
   end
@@ -94,6 +112,6 @@ class PatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pat_params
-      params.require(:pat).permit(:firstname, :lastname, :number)
+      params.require(:pat).permit(:firstname, :lastname, :number, :facility_id, :ward, :doa, :dod, :dob)
     end
 end

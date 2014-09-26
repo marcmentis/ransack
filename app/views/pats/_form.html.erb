@@ -10,30 +10,62 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class="small-10 small-offset-1">
+      <%= f.label :facility_id %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :facility_id %>
+    </div>
 
-  <div class="field">
-    <%= f.label :firstname %><br>
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :lastname %><br>
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.number_field :number %>
-  </div>
-  <div>
-    <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
-  </div> 
+    <div class="small-10 small-offset-1">
+      <%= f.label :firstname %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :firstname %>
+    </div>
 
-  <div class="actions">
-  <input name="commit" type="submit" value="Create Pat" class="button tiny radius"  />
-  
+    <div class="small-10 small-offset-1">
+      <%= f.label :lastname %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :lastname %>
+    </div> 
 
-    <%#= f.submit %>
+    <div class="small-10 small-offset-1">
+      <%= f.label :number %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :number %>
+    </div> 
+
+    <div class="small-10 small-offset-1">
+      <%= f.label :ward %>
+    </div>
+    <div class="small-10 small-offset-1" id="divFormSelectWrapper">
+      <%= f.text_field :ward, id: 'tWard' %>  
+    </div>  
+
+    <div class="small-10 small-offset-1">
+      <%= f.label :doa %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.date_field :doa %>
+      <%#= f.date_select :doa %>
+    </div> 
+  </div>
+
+
+  <div class="row collapse">
+    <div class="small-6 columns">
+      <%= f.submit class: 'button tiny radius' %>
+    </div>
+    <div class="small-6 columns">
+      <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>
+    </div>       
   </div>
 <% end %>
+
 
 
 
