@@ -1,0 +1,50 @@
+
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Listing pats</h1>
+
+    <table>
+      <thead>
+        <tr class="tableHeader">
+          <th>Facility</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Number</th>
+          <th>Ward</th>
+          <th>Doa</th>
+          <th>Dob</th>
+          <th>Dod</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @pats.each do |pat| %>
+          <tr>
+            <td><%= pat.facility_id %></td>
+            <td><%= pat.firstname %></td>
+            <td><%= pat.lastname %></td>
+            <td><%= pat.number %></td>
+            <td><%= pat.ward %></td>
+            <td><%= pat.doa %></td>
+            <td><%= pat.dob %></td>
+            <td><%= pat.dod %></td>
+          </tr>
+        <% end %>
+          <tr>
+            <td colspan="5" class="tableFooter">
+              <%= paginate @pats %>
+            </td>
+            <td colspan="3" class="tableFooter">
+              <%= @searchNumber %> from <%= @totNumber %> total
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Pat', new_pat_path %>
+    
+  </div>
+</div>
+

@@ -1,9 +1,13 @@
 Startup4002::Application.routes.draw do
   resources :facilities
-
   resources :for_selects
+  resources :pats do
+    collection do
+      get 'complex'
+    end
+  end
 
-  resources :pats
+
 
   get "static_pages/home"
   # The priority is based upon order of creation: first created -> highest priority.
