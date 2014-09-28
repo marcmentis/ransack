@@ -29,8 +29,8 @@ class PatsController < ApplicationController
   def complex
     @q = Pat.search(params[:q])   
     @pats = @q.result.page(params[:page]).per(15)
-    @q.build_condition 
-    @q.build_sort 
+    @q.build_condition  
+    @q.build_sort if @q.sorts.empty?
 
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count

@@ -3,7 +3,8 @@ Startup4002::Application.routes.draw do
   resources :for_selects
   resources :pats do
     collection do
-      post :complex
+      # post :complex
+      match 'complex' => 'pats#complex', via: [:get, :post], as: :complex
     end
   end
 
