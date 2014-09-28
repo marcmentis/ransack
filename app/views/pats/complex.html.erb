@@ -2,7 +2,7 @@
 <div class="row">
   <div class="large-12 columns">
     <h1>Listing pats</h1>
-    <%= search_form_for @q, url: complex_pats_path do |f| %>
+    <%= search_form_for @q, url: complex_pats_path, method: :post do |f| %>
         <%= f.condition_fields do |c| %>
         <div class="row">
           <%= c.attribute_fields do |a| %>
