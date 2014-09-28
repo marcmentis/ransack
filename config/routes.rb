@@ -3,7 +3,7 @@ Startup4002::Application.routes.draw do
   resources :for_selects
   resources :pats do
     collection do
-      get 'complex'
+      post :complex
     end
   end
 
