@@ -23,8 +23,11 @@
         <% end %>
       
       <div class="row">
-        <div class="large-2 larg-offset-1 columns">
+        <div class="large-2 large-offset-1 columns">
           <%= f.submit "Find", class: "button tiny radius" %>
+        </div>
+        <div class="large-2 columns end">
+          <%= link_to " Excel", complex_pats_path(format: "xls")  %>
         </div>
       </div>
       

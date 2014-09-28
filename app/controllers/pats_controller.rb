@@ -42,6 +42,11 @@ class PatsController < ApplicationController
                       .order(option_order: :asc)  
     # @grouped_options = ForSelect.grouped_options(@forSelect)
     @grouped_options = GroupedOptions.grouped_options(@forSelect)
+
+    respond_to do |format|
+      format.html {}
+      format.xls {}
+    end
     
   end
 
