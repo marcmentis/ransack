@@ -1,43 +1,58 @@
 
 <div class="row">
-  <div class="large-12 columns">
-    <h1>Listing pats</h1>
+  <div class="large-10 large-centered columns">
+    <div class="large-9 large-centered columns">
+      <h1>Dynamic Patient Search</h1>
+    </div>
     <%= search_form_for @q, url: complex_pats_path, method: :post do |f| %>
-        <%= f.condition_fields do |c| %>
-        <div class="row">
-          <%= c.attribute_fields do |a| %>
-            <div class="large-3 columns">
-              <%= a.attribute_select associations: [:facility] %>
+        <div class="panel callout radius">
+          <%= f.condition_fields do |c| %>
+            <div class="row">
+              <%= c.attribute_fields do |a| %>
+                <div class="large-4 columns">
+                  <%= a.attribute_select associations: [:facility] %>
+                </div>
+              <% end %>
+              <div class="large-4 columns">
+                <%= c.predicate_select %>
+              </div>
+              <%= c.value_fields do |v| %>
+                <div class="large-4 columns">
+                  <%= v.text_field :value %>
+                </div>
+
+              <% end %>
+            </div> 
+            <% end %>
+
+          <div class="row">
+            <div class="large-2 columns">
+              <%= f.submit "Find", class: "button tiny radius" %>
             </div>
-          <% end %>
-          <div class="large-3 columns">
-            <%= c.predicate_select %>
+            <div class="large-1 large-offset-2 columns">
+              <%= label_tag('Show:', nil, class: 'right') %>
+            </div>
+            <div class="large-1 columns">
+              <%= text_field_tag "PatNumber", params[:PatNumber] %>
+            </div>
+
+            <div class="large-2 large-offset-2 columns">
+              <%= label_tag('Download:', nil, class: 'right') %>
+            </div>
+            <div class="large-2 columns end">
+              <%= link_to " Excel", complex_pats_path(format: "xls"), class: "button tiny radius left" %>
+            </div>
           </div>
-          <%= c.value_fields do |v| %>
-            <div class="large-3 columns">
-              <%= v.text_field :value %>
-            </div>
-            <div class="large-3 columns"></div>
-          <% end %>
-        </div> 
-        <% end %>
+        </div>
       
-      <div class="row">
-        <div class="large-2 large-offset-1 columns">
-          <%= f.submit "Find", class: "button tiny radius" %>
-        </div>
-        <div class="large-2 columns end">
-          <%= link_to " Excel", complex_pats_path(format: "xls")  %>
-        </div>
-      </div>
       
     <% end %>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-12 columnms">
-    <table>
+  <div class="large-12 large-centered columnms">
+    <table class="large-10 large-centered columns">
       <thead>
         <tr class="tableHeader">
           <th>FID</th>

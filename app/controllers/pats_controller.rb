@@ -27,8 +27,11 @@ class PatsController < ApplicationController
   end
 
   def complex
-    @q = Pat.search(params[:q])   
-    @pats = @q.result.page(params[:page]).per(15)
+    if params[:PatNumber] == nil
+      params.merge!(PatNumber: 15)
+    end
+    @q = Pat.search(params[:q])      
+    @pats = @q.result.page(params[:page]).per(params[:PatNumber])
     @q.build_condition  
     @q.build_sort if @q.sorts.empty?
 
