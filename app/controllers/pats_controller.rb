@@ -27,8 +27,12 @@ class PatsController < ApplicationController
   end
 
   def complex
-    @q = Pat.search(params[:q])   
-    @pats = @q.result.page(params[:page]).per(15)
+
+    if params[:PatNumber] == nil
+      params.merge!(PatNumber: 15)
+    end
+    @q = Pat.search(params[:q])      
+    @pats = @q.result.page(params[:page]).per(params[:PatNumber])
     @q.build_condition  
     @q.build_sort if @q.sorts.empty?
 
@@ -42,6 +46,11 @@ class PatsController < ApplicationController
                       .order(option_order: :asc)  
     # @grouped_options = ForSelect.grouped_options(@forSelect)
     @grouped_options = GroupedOptions.grouped_options(@forSelect)
+
+    respond_to do |format|
+      format.html {}
+      format.xls {}
+    end
     
   end
 
