@@ -27,6 +27,7 @@ class PatsController < ApplicationController
   end
 
   def complex
+
     if params[:PatNumber] == nil
       params.merge!(PatNumber: 15)
     end

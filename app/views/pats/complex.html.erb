@@ -40,7 +40,8 @@
               <%= label_tag('Download:', nil, class: 'right') %>
             </div>
             <div class="large-2 columns end">
-              <%= link_to " Excel", complex_pats_path(format: "xls"), class: "button tiny radius left" %>
+              <%= link_to " Excel", complex_pats_path(format: "xls", :PatNumber => params[:PatNumber]), class: "button tiny radius left" %>
+              
             </div>
           </div>
         </div>
