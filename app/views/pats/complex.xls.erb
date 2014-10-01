@@ -12,6 +12,9 @@
         <Cell><Data ss:Type="String">LastName</Data></Cell>
         <Cell><Data ss:Type="String">Number</Data></Cell>
         <Cell><Data ss:Type="String">Ward</Data></Cell>
+        <Cell><Data ss:Type="String">DOA</Data></Cell>
+        <Cell><Data ss:Type="String">DOB</Data></Cell>
+        <Cell><Data ss:Type="String">DOD</Data></Cell>
       </Row>
     <% @pats.each do |pat| %>
       <Row>
@@ -20,6 +23,9 @@
         <Cell><Data ss:Type="String"><%= pat.lastname %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= pat.number %></Data></Cell>
         <Cell><Data ss:Type="String"><%= pat.ward %></Data></Cell>
+        <Cell><Data ss:Type="DateTime"><%= pat.doa %></Data></Cell>
+        <Cell><Data ss:Type="DateTime"><%= pat.dob %></Data></Cell>
+        <Cell><Data ss:Type="DateTime"><%= pat.dod %></Data></Cell>
       </Row>
     <% end %>
     </Table>
