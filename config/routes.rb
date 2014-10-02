@@ -1,9 +1,14 @@
 Startup4002::Application.routes.draw do
   resources :facilities
-
   resources :for_selects
+  resources :pats do
+    collection do
+      # post :complex
+      match 'complex' => 'pats#complex', via: [:get, :post], as: :complex
+    end
+  end
 
-  resources :pats
+
 
   get "static_pages/home"
   # The priority is based upon order of creation: first created -> highest priority.

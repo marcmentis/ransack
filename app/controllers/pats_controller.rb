@@ -26,6 +26,34 @@ class PatsController < ApplicationController
     end
   end
 
+  def complex
+
+    if params[:PatNumber] == nil
+      params.merge!(PatNumber: 15)
+    end
+    @q = Pat.search(params[:q])      
+    @pats = @q.result.page(params[:page]).per(params[:PatNumber])
+    @q.build_condition  
+    @q.build_sort if @q.sorts.empty?
+
+    @totNumber = Pat.all.count
+    @searchNumber = @q.result.count
+
+    # @ForSelect needed as select_tag (sWard) instantiated on index.html.erb
+    # @pat = Pat.new
+    @forSelect = ForSelect.all
+                      .where(code: 'ward')
+                      .order(option_order: :asc)  
+    # @grouped_options = ForSelect.grouped_options(@forSelect)
+    @grouped_options = GroupedOptions.grouped_options(@forSelect)
+
+    respond_to do |format|
+      format.html {}
+      format.xls {}
+    end
+    
+  end
+
   # GET /pats/1
   # GET /pats/1.json
   def show

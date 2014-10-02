@@ -270,7 +270,7 @@ $primary-color: #008CBA;
 // $alert-font-color: #fff;
 // $alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
 
-// We use this for close hover effect.
+// We use this for close hover effect.bu
 // $alert-function-factor: -14%;
 
 // We use these to control border styles.
@@ -354,6 +354,7 @@ $primary-color: #008CBA;
 // We use this to control the display property.
 // $button-display: inline-block;
 // $button-margin-bottom: rem-calc(20);
+    $button-margin-bottom: rem-calc(2);
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
