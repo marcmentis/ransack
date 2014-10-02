@@ -1,4 +1,6 @@
 Startup4002::Application.routes.draw do
+  resources :weekly_notes
+
   resources :facilities
   resources :for_selects
   resources :pats do

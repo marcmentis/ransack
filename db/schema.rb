@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923224808) do
+ActiveRecord::Schema.define(version: 20141002154338) do
 
   create_table "facilities", force: true do |t|
     t.string   "name"
@@ -44,5 +44,15 @@ ActiveRecord::Schema.define(version: 20140923224808) do
   end
 
   add_index "pats", ["facility_id"], name: "index_pats_on_facility_id"
+
+  create_table "weekly_notes", force: true do |t|
+    t.string   "danger_yn"
+    t.string   "drugs_last_changed"
+    t.text     "drugs_not_why"
+    t.text     "drugs_change_why"
+    t.date     "meeting_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
