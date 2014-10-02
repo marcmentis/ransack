@@ -1,37 +1,80 @@
-<%= form_for(@weekly_note) do |f| %>
-  <% if @weekly_note.errors.any? %>
+<%= form_for(@pat, :url => weekly_notes_path, :method => :post) do |f| %>
+  <% if @pat.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@weekly_note.errors.count, "error") %> prohibited this weekly_note from being saved:</h2>
+      <h2><%= pluralize(@pat.errors.count, "error") %> prohibited this pat from being saved:</h2>
 
       <ul>
-      <% @weekly_note.errors.full_messages.each do |msg| %>
+      <% @pat.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class="small-10 small-offset-1">
+      <%= f.label :facility_id %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :facility_id %>
+    </div>
 
-  <div class="field">
-    <%= f.label :danger_yn %><br>
-    <%= f.text_field :danger_yn %>
+    <div class="small-10 small-offset-1">
+      <%= f.label :firstname %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :firstname %>
+    </div>
+
+    <div class="small-10 small-offset-1">
+      <%= f.label :lastname %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :lastname %>
+    </div> 
+
+    <div class="small-10 small-offset-1">
+      <%= f.label :number %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.text_field :number %>
+    </div> 
+
+    <div class="small-10 small-offset-1">
+      <%= f.label :ward %>
+    </div>
+    <div class="small-10 small-offset-1" id="divFormSelectWrapper">
+      <%= f.text_field :ward, id: 'tWard' %>  
+    </div>  
+
+    <div class="small-10 small-offset-1">
+      <%= f.label :doa %>
+    </div>
+    <div class="small-10 small-offset-1">
+      <%= f.date_field :doa %>
+      <%#= f.date_select :doa %>
+    </div> 
   </div>
-  <div class="field">
-    <%= f.label :drugs_last_changed %><br>
-    <%= f.text_field :drugs_last_changed %>
-  </div>
-  <div class="field">
-    <%= f.label :drugs_not_why %><br>
-    <%= f.text_area :drugs_not_why %>
-  </div>
-  <div class="field">
-    <%= f.label :drugs_change_why %><br>
-    <%= f.text_area :drugs_change_why %>
-  </div>
-  <div class="field">
-    <%= f.label :meeting_date %><br>
-    <%= f.date_select :meeting_date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <%= f.fields_for :weekly_note do |builder| %>
+    <div class="row">
+      <%= builder.label :drugs_not_why  %>
+      <%= builder.text_area :drugs_not_why %>
+    </div>
+  <% end %>
+
+
+
+  <div class="row collapse">
+    <div class="small-6 columns">
+      <%= f.submit class: 'button tiny radius' %>
+    </div>
+    <div class="small-6 columns">
+      <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>
+    </div>       
   </div>
 <% end %>
+
+
+
+
+
+
