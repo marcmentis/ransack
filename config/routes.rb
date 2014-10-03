@@ -1,5 +1,9 @@
 Startup4002::Application.routes.draw do
-  resources :weekly_notes
+  resources :weekly_notes do
+    collection do
+      match 'presentation' => 'weekly_notes#presentation', via: [:get, :post], as: :presentation
+    end
+  end
 
   resources :facilities
   resources :for_selects
