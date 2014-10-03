@@ -4,11 +4,17 @@ class WeeklyNotesController < ApplicationController
 
 
   def presentation
+  # byebug
+  if (params[:q] == nil || params[:q][:ward_cont] == "")
+    params[:q] = {"ward_cont"=>"0/0"}
+  end
     @q = Pat.search(params[:q])   
     @pats = @q.result.page(params[:page]).per(15)
 
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
+
+    
     
   end
 
@@ -25,9 +31,19 @@ class WeeklyNotesController < ApplicationController
 
   # GET /weekly_notes/new
   def new
-
+    # byebug
     @weekly_note = WeeklyNote.new
     @pat = Pat.find(1)
+
+    respond_to do |format|
+      format.html {render action: 'new'}
+      format.js { render "new_edit"}
+    end
+  end
+
+  def new_with_pat
+    @weekly_note = WeeklyNote.new
+    @pat = Pat.find(params[:id])
 
     respond_to do |format|
       format.html {render action: 'new'}

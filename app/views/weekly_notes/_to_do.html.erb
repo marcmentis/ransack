@@ -1,7 +1,7 @@
 <div class="large-12 columns">
 <div class="panel">
   <div class="panel callout radius">
-     <%= search_form_for @q, remote: true do |f| %>
+     <%= search_form_for @q, url: presentation_weekly_notes_path, remote: true do |f| %>
         <div class="row collapse">
           <div class="small-4 columns" >
                 <%= f.submit class: 'button tiny radius' %>           
@@ -34,9 +34,9 @@
       <% @pats.each do |pat| %>
         <tr>
           <!-- <td><%#= pat.facility_id %></td> -->
-          <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %></td>
+          <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %> </td>
           <!-- <td><%#= link_to 'Show', pat %></td> -->
-          <td><%= link_to 'NewForm', new_weekly_note_path, class: 'lEdit', remote: true%></td>
+          <td><%= link_to 'NewForm', new_with_pat_path(pat), class: 'lEdit', remote: true%></td>
         </tr>
       <% end %>
       <tr>

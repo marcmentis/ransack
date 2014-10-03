@@ -4,6 +4,8 @@ Startup4002::Application.routes.draw do
       match 'presentation' => 'weekly_notes#presentation', via: [:get, :post], as: :presentation
     end
   end
+  # Make named path for weekly_notes "new" to pass pat id
+  get 'weekly_notes/:id/new' => 'weekly_notes#new_with_pat', as: :new_with_pat
 
   resources :facilities
   resources :for_selects

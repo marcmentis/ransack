@@ -1,5 +1,5 @@
 
-  <%= @pat.firstname %>
+  <%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
 <%= form_for(@weekly_note, remote: true) do |ff| %>
     <% if @weekly_note.errors.any? %>
       <div id="error_explanation">
