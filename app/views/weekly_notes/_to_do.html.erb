@@ -1,35 +1,69 @@
-<div class="large-12 columns">
-<div class="panel">
-  
-  
-  <table>
-    <thead>
-      <tr class="tableHeader">
-        <!-- <th>FID</th> -->
-        <th><%= sort_link(@q, :lastname, "Name") %></th>
-        <th></th>
-        <!-- <th></th>
-        <th></th>-->
-      </tr>
-    </thead>
-    <tbody>
-      <% @pats.each do |pat| %>
-        <tr>
-          <!-- <td><%#= pat.facility_id %></td> -->
-          <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %> </td>
-          <!-- <td><%#= link_to 'Show', pat %></td> -->
-          <td><%= link_to 'NewForm', new_with_pat_path(pat), class: 'lEdit', remote: true%></td>
+<div class="row ">
+  <div class="large-6 columns">
+    <div><b>To Do</b></div>
+    <table>
+      <thead>
+        <tr class="tableHeader">
+          <!-- <th>FID</th> -->
+          <th><%= sort_link(@q, :lastname, "Name") %></th>
+          <th></th>
+          <!-- <th></th>
+          <th></th>-->
         </tr>
-      <% end %>
-      <tr>
-        <td class="tableFooter">
-          <%= paginate @pats %>
-        </td>
-        <!-- <td colspan="3" class="tableFooter">
-          <%#= @searchNumber %>  from <%#= @totNumber %> total
-        </td> -->
-      </tr>
-    </tbody> 
-  </table> 
-</div>       
+      </thead>
+      <tbody>
+        <% @pats.each do |pat| %>
+          <tr>
+            <!-- <td><%#= pat.facility_id %></td> -->
+            <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %> </td>
+            <!-- <td><%#= link_to 'Show', pat %></td> -->
+            <td><%= link_to 'new', new_with_pat_path(pat), class: 'lEdit', remote: true%></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td class="tableFooter">
+            <%= paginate @pats %>
+          </td>
+          <!-- <td colspan="3" class="tableFooter">
+            <%#= @searchNumber %>  from <%#= @totNumber %> total
+          </td> -->
+        </tr>
+      </tbody> 
+    </table> 
+
+  </div>
+  <div class="large-6 columns">
+    <div><b>Done</b></div>
+    <table>
+      <thead>
+        <tr class="tableHeader">
+          <!-- <th>FID</th> -->
+          <th><%= sort_link(@q, :lastname, "Name") %></th>
+          <th></th>
+          <!-- <th></th>
+          <th></th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <% @pats.each do |pat| %>
+          <tr>
+            <!-- <td><%#= pat.facility_id %></td> -->
+            <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %> </td>
+            <!-- <td><%#= link_to 'Show', pat %></td> -->
+            <td><%= link_to 'edit', new_with_pat_path(pat), class: 'lEdit', remote: true%></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td class="tableFooter">
+            <%= paginate @pats %>
+          </td>
+          <!-- <td colspan="3" class="tableFooter">
+            <%#= @searchNumber %>  from <%#= @totNumber %> total
+          </td> -->
+        </tr>
+      </tbody> 
+    </table> 
+  </div>
 </div>
+
+      

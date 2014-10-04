@@ -5,10 +5,11 @@ class WeeklyNotesController < ApplicationController
 
 
   def presentation
-  # byebug
+# byebug
   if (params[:q] == nil || params[:q][:ward_cont] == "")
     params[:q] = {"ward_cont"=>"0/0"}
   end
+
     @q = Pat.search(params[:q])   
     @pats = @q.result.page(params[:page]).per(15)
 

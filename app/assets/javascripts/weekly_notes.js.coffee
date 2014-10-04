@@ -4,13 +4,20 @@
 
 $(document).on "ready", ->
 
+  # STYLE
+  $('#meeting_date').hide()
+
   # SELECTS
   $('#s_weekly_ward').change ->
     value = $('#s_weekly_ward').val()
     $('#q_ward_cont').val(value)
-    # alert 'after insertion'
+    $('#meeting_date').show()
     $('#pat_search').submit()
     # alert 'after submit'
+
+  # DATEPICKERS
+  $('#meeting_date').change ->
+  	alert 'change the date'
 
 
 

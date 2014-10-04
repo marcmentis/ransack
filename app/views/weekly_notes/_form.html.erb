@@ -1,5 +1,8 @@
-
+<div><b>Weekly Meeting Form</b></div>
+<div class="large-offset-1">
   <%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
+</div>
+  
 <%= form_for(@weekly_note, remote: true) do |ff| %>
     <% if @weekly_note.errors.any? %>
       <div id="error_explanation">
@@ -44,6 +47,7 @@
     </div>
   </div>
 <% end %>
+
   
 
 
