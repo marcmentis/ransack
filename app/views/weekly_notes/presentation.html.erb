@@ -1,11 +1,29 @@
 <div class="row">
-	<div id="divToDo" class="large-6 columns">
+	
+	<div class=" large-6 columns panel callout radius">
+	     <%= search_form_for @q, url: presentation_weekly_notes_path, remote: true do |f| %> 
+	        <div class="row collapse">
+	          <div class="small-4 columns" >
+	                <%= f.submit class: 'button tiny radius' %>           
+	          </div>
+
+	          <div class="small-4 columns">
+	            <%= f.label(:ward_cont, "Ward")  %>
+	          </div>
+	          <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), id: 's_weekly_ward', prompt: 'Choose Ward') %>
+	          <div class="small-4 columns">
+	            <%= f.search_field :ward_cont %>
+	          </div>                         
+	        </div>        
+	      <% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div id="divToDo" class="large-6 columns" >
 		<%= render('to_do') %>
 	</div>
-
-	<div class="large-6 columns">
-		<div id="divForm">
-	  		<%#= render('form') %> 
-		</div>
+	<div id="divForm" class="large-6 columns">
+  		<%#= render('form') %> 
 	</div>
 </div>

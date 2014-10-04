@@ -12,13 +12,9 @@ class PatsController < ApplicationController
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
 
-    # @ForSelect needed as select_tag (sWard) instantiated on index.html.erb
-    # @pat = Pat.new
-    @forSelect = ForSelect.all
-                      .where(code: 'ward')
-                      .order(option_order: :asc)  
-    # @grouped_options = ForSelect.grouped_options(@forSelect)
-    @grouped_options = GroupedOptions.grouped_options(@forSelect)
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
+
 
     respond_to do |format|
       format.html { render action: 'index' }
@@ -39,13 +35,8 @@ class PatsController < ApplicationController
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
 
-    # @ForSelect needed as select_tag (sWard) instantiated on index.html.erb
-    # @pat = Pat.new
-    @forSelect = ForSelect.all
-                      .where(code: 'ward')
-                      .order(option_order: :asc)  
-    # @grouped_options = ForSelect.grouped_options(@forSelect)
-    @grouped_options = GroupedOptions.grouped_options(@forSelect)
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
 
     respond_to do |format|
       format.html {}

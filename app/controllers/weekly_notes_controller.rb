@@ -3,6 +3,7 @@ class WeeklyNotesController < ApplicationController
   # skip_before_action :verify_authenticity_token
 
 
+
   def presentation
   # byebug
   if (params[:q] == nil || params[:q][:ward_cont] == "")
@@ -14,7 +15,8 @@ class WeeklyNotesController < ApplicationController
     @totNumber = Pat.all.count
     @searchNumber = @q.result.count
 
-    
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
     
   end
 
