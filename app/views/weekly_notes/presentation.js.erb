@@ -1,5 +1,8 @@
 $('#divToDo').html("<%= j render('to_do') %>")
-$('#divForm').html("")
+$('#divForm').html("In the form")
+
+$('#divPreviousMeetings').html("<%= j select_tag(:weekly_note_id, options_from_collection_for_select(@meeting_date, :meeting_date, :meeting_date), prompt: 'Previous Meetings') %>")
+
   // $('#s_weekly_ward').change(function(){
   // 	alert('in presentation')
   //   value = $('#s_weekly_ward').val()

@@ -6,7 +6,9 @@ class WeeklyNotesController < ApplicationController
 
   def presentation
 # byebug
-  if (params[:q] == nil || params[:q][:ward_cont] == "")
+  if (params[:q] == nil || 
+      params[:q][:ward_cont] == "" || 
+      params[:meeting_date] == "")
     params[:q] = {"ward_cont"=>"0/0"}
   end
 
@@ -18,6 +20,14 @@ class WeeklyNotesController < ApplicationController
 
     # Generate the 2d array needed for grouped select in view
     @grouped_options = Pat.GroupedSelect('ward', ForSelect)
+ 
+    
+
+    @meeting_date = WeeklyNote.joins(:pat).uniq
+                              .where(pats: {ward: params[:ward_id]})
+                              .order(meeting_date: :desc)
+                       
+# byebug
     
   end
 

@@ -1,6 +1,5 @@
 class WeeklyNote < ActiveRecord::Base
-	belongs_to :pats
+	belongs_to :pat
 
-	@test = "This is from the model"
 end
  
