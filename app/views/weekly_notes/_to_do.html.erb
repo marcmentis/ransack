@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @pats.each do |pat| %>
+        <% @all_to_do.each do |pat| %>
           <tr>
             <!-- <td><%#= pat.facility_id %></td> -->
             <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %> </td>
@@ -22,7 +22,7 @@
         <% end %>
         <tr>
           <td class="tableFooter">
-            <%= paginate @pats %>
+            <%#= paginate @to_do %>
           </td>
           <!-- <td colspan="3" class="tableFooter">
             <%#= @searchNumber %>  from <%#= @totNumber %> total
@@ -45,7 +45,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @pats.each do |pat| %>
+        <% @all_done.each do |pat| %>
           <tr>
             <!-- <td><%#= pat.facility_id %></td> -->
             <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %> </td>
@@ -55,7 +55,7 @@
         <% end %>
         <tr>
           <td class="tableFooter">
-            <%= paginate @pats %>
+            <%#= paginate @to_do %>
           </td>
           <!-- <td colspan="3" class="tableFooter">
             <%#= @searchNumber %>  from <%#= @totNumber %> total

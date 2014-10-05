@@ -12,20 +12,37 @@ class WeeklyNotesController < ApplicationController
     params[:q] = {"ward_cont"=>"0/0"}
   end
 
-    @q = Pat.search(params[:q])   
-    @pats = @q.result.page(params[:page]).per(15)
 
-    @totNumber = Pat.all.count
-    @searchNumber = @q.result.count
 
-    # Generate the 2d array needed for grouped select in view
-    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
- 
-    
+  @all_done = Pat.joins(:weekly_notes)
+                  .where(pats: {ward: params[:q][:ward_cont]})
+                  .where(weekly_notes: {meeting_date: params[:meeting_date]})
+                  .order(lastname: :asc)
 
-    @meeting_date = WeeklyNote.joins(:pat).uniq
-                              .where(pats: {ward: params[:ward_id]})
-                              .order(meeting_date: :desc)
+  # Create an array of Pat.id to use in .where IN in @all_to_do
+  not_these_ids = @all_done.each.map{|p| p.id}
+
+  # IN clause can't take an empty array []. An empty string will work
+  not_these_ids.empty? ? not_these_ids = [""] : not_these_ids
+
+
+  @all_to_do = Pat.where(pats: {ward: params[:q][:ward_cont]})
+                  .where("id NOT IN (?)", not_these_ids)
+                  .order(lastname: :asc)
+
+  @q = @all_to_do.search(params[:q])   
+  @all_to_do = @q.result.page(params[:page]).per(15)
+
+
+
+  # Generate the 2d array needed for grouped select in view
+  @grouped_options = Pat.GroupedSelect('ward', ForSelect)
+
+  
+
+  @meeting_date = WeeklyNote.joins(:pat).uniq
+                            .where(pats: {ward: params[:ward_id]})
+                            .order(meeting_date: :desc)
                        
 # byebug
     
