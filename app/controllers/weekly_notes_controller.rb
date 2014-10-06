@@ -27,8 +27,10 @@ class WeeklyNotesController < ApplicationController
 
 
   @all_to_do = Pat.where(pats: {ward: params[:q][:ward_cont]})
-                  .where("id NOT IN (?)", not_these_ids)
+                  .where.not(id: not_these_ids)
                   .order(lastname: :asc)
+
+# .where("id NOT IN (?)", not_these_ids)
 
   @q = @all_to_do.search(params[:q])   
   @all_to_do = @q.result.page(params[:page]).per(15)
