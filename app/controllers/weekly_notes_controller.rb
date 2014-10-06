@@ -40,7 +40,7 @@ class WeeklyNotesController < ApplicationController
 
   
 
-  @meeting_date = WeeklyNote.joins(:pat).uniq
+  @meeting_date = WeeklyNote.select(:meeting_date).distinct.joins(:pat)
                             .where(pats: {ward: params[:ward_id]})
                             .order(meeting_date: :desc)
                        
