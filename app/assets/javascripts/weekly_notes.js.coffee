@@ -5,15 +5,14 @@
 $(document).on "ready", ->
 
   # STYLE
-  $('#meeting_date').hide()
+  $('#meeting_date, #sPreviousMeetings').prop('disabled', true)
 
 
   # SELECTS
   $('#s_weekly_ward').change ->
-    value = $('#s_weekly_ward').val()
-    $('#q_ward_cont').val(value)
+    $('#meeting_date, #sPreviousMeetings').prop('disabled', false)
     $('#pat_search').submit()
-    $('#meeting_date').show()
+    # $('#meeting_date').show()
     # alert 'after submit'
 
   $('#sPreviousMeetings').change ->
