@@ -5,24 +5,32 @@ class WeeklyNotesController < ApplicationController
 
 
   def presentation
-# byebug
+byebug
   if (params[:q] == nil || 
       params[:q][:ward_cont] == "" || 
       params[:meeting_date] == "")
     params[:q] = {"ward_cont"=>"0/0"}
   end
 
+  # Determine what date to choose:
+  if params[:sPreviousMeetings] != ""
+    chosen_date = params[:sPreviousMeetings]
+  elsif params[:meeting_date] != ""
+    chosen_date = params[:meeting_date]
+  end
 
 
+  # Get all the Patients who have weekly notes from a given ward and date
   @all_done = Pat.joins(:weekly_notes)
                   .where(pats: {ward: params[:q][:ward_cont]})
-                  .where(weekly_notes: {meeting_date: params[:meeting_date]})
+                  .where(weekly_notes: {meeting_date: chosen_date})
                   .order(lastname: :asc)
 
   # Create an array of Pat.id to use in .where IN in @all_to_do
   not_these_ids = @all_done.each.map{|p| p.id}
 
-  # IN clause can't take an empty array []. An empty string will work
+  # Passing .where.not an empty array results in a nil result. 
+     # An empty string will give all those patients in the ward not in the array
   not_these_ids.empty? ? not_these_ids = [""] : not_these_ids
 
 
@@ -30,7 +38,6 @@ class WeeklyNotesController < ApplicationController
                   .where.not(id: not_these_ids)
                   .order(lastname: :asc)
 
-# .where("id NOT IN (?)", not_these_ids)
 
   @q = @all_to_do.search(params[:q])   
   @all_to_do = @q.result.page(params[:page]).per(15)
@@ -43,7 +50,7 @@ class WeeklyNotesController < ApplicationController
   
 
   @meeting_date = WeeklyNote.select(:meeting_date).distinct.joins(:pat)
-                            .where(pats: {ward: params[:ward_id]})
+                            .where(pats: {ward: params[:s_weekly_ward]})
                             .order(meeting_date: :desc)
                        
 # byebug

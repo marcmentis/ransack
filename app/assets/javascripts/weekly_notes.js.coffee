@@ -16,10 +16,15 @@ $(document).on "ready", ->
     $('#meeting_date').show()
     # alert 'after submit'
 
+  $('#sPreviousMeetings').change ->
+    alert 'previous meetings'
+
   # DATEPICKERS
   $('#meeting_date').change ->
   	# alert 'change the date'
+  	$('#sPreviousMeetings').val("")
   	$('#pat_search').submit()
+
 
 
 

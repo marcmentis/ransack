@@ -1,8 +1,13 @@
 $('#divToDo').html("<%= j render('to_do') %>")
 $('#divForm').html("In the form")
 
-$('#divPreviousMeetings').html("<%= j select_tag(:weekly_note_id, options_from_collection_for_select(@meeting_date, :meeting_date, :meeting_date), prompt: 'Previous Meetings') %>")
+$('#divPreviousMeetings').html("<%= j select_tag(:sPreviousMeetings, options_from_collection_for_select(@meeting_date, :meeting_date, :meeting_date), prompt: 'Previous Meetings')%>")
 
+$('#sPreviousMeetings').change(function(){
+  alert('previous meeting from .js.erb');
+  $('#meeting_date').val("");
+  $('#pat_search').submit();
+});
   // $('#s_weekly_ward').change(function(){
   // 	alert('in presentation')
   //   value = $('#s_weekly_ward').val()
