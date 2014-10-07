@@ -5,13 +5,18 @@
 $(document).on "ready", ->
 
   # STYLE
-  $('#meeting_date, #sPreviousMeetings').prop('disabled', true)
+  #$('#divFPat_Search').hide()
+  # $('#meeting_date, #sPreviousMeetings').prop('disabled', true)
 
 
   # SELECTS
   $('#s_weekly_ward').change ->
-    $('#meeting_date, #sPreviousMeetings').prop('disabled', false)
-    $('#pat_search').submit()
+    $('#divFPat_Search').show()
+    $('#meeting_date').val("")
+    $('#fMeetings').submit()
+    $('#t_ward').val($(this).val())
+
+    # $('#meeting_date, #sPreviousMeetings').prop('disabled', false)
     # $('#meeting_date').show()
     # alert 'after submit'
 

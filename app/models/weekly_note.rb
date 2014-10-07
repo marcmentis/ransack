@@ -4,7 +4,7 @@ class WeeklyNote < ActiveRecord::Base
 	# Get all the Patients who have weekly notes from a given ward and date
 	def self.all_done(params, chosen_date)
 	    all_done = Pat.joins(:weekly_notes)
-	                  .where(pats: {ward: params[:s_weekly_ward]})
+	                  .where(pats: {ward: params[:t_ward]})
 	                  .where(weekly_notes: {meeting_date: chosen_date})
 	                  .order(lastname: :asc)
 	end
@@ -18,7 +18,7 @@ class WeeklyNote < ActiveRecord::Base
 	       # An empty string will give all those patients in the ward not in the array
 	    not_these_ids.empty? ? not_these_ids = [""] : not_these_ids
 
-		all_to_do = Pat.where(pats: {ward: params[:s_weekly_ward]})
+		all_to_do = Pat.where(pats: {ward: params[:t_ward]})
                   .where.not(id: not_these_ids)
                   .order(lastname: :asc)	
 	end

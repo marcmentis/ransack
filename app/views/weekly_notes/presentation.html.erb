@@ -1,32 +1,29 @@
 <div class="row">
 	<div class=" large-8 columns panel callout radius">
 	     <%#= search_form_for @q, url: presentation_weekly_notes_path, remote: true do |f| %> 
-	     <%= form_tag(presentation_weekly_notes_path, id: 'pat_search', name: 'pat_search', remote: true) do %>
-	        <div class="row">
-		        <div class="hide large-4 columns">
-		            <%#= f.search_field :ward_cont %>
-		         </div>  
-		         <div class="hide large-4 columns" >
-		                <%#= f.submit class: 'button tiny radius' %>
-		                <%= submit_tag("Filter") %>           
-		         </div> 
-		          <!-- <div class="small-4 columns">
-		            <%#= f.label(:ward_cont, "Ward")  %>
-		          </div> -->
-		        <div class="large-3 columns" >
-		          	<%= select_tag(:s_weekly_ward, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
-		        </div>
+	     
+        <div class="row">
+			<%= form_tag(presentation_weekly_notes_path, method: 'get', id: "fMeetings", name: "fMeetings", remote: true) do %>	
+	        <div class="large-3 columns" >
+	          	<%= select_tag(:s_weekly_ward, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
+	        </div>
+	        <% end %>
+	        <div id="divFPat_Search" class="hide">
+		        <%= form_tag(meetings_weekly_notes_path, method: 'get', id: 'pat_search', name: 'pat_search', remote: true) do %>
+		        	<div class="hide">
+		        		<%= text_field_tag(:t_ward) %>
+		        	</div>
+			        <div id="divMeetingDate" class="large-4 columns">
+			          	<%= date_field_tag(:meeting_date, value: 'This Meeting') %>
+			        </div>
 
-		        <div id="divMeetingDate" class="large-4 columns">
-		          	<%= date_field_tag(:meeting_date, value: 'This Meeting') %>
-		        </div>
-
-		        <div id="divPreviousMeetings" class="large-4 columns end">
-		        <%= select_tag(:sPreviousMeetings, options_from_collection_for_select(@meeting_date, :meeting_date, :meeting_date), prompt: 'Previous Meetings')  %>
-		        	<%#= select_tag(:weekly_note_id, options_from_collection_for_select(@meeting_date, :meeting_date, :meeting_date), prompt: 'Previous Meetings') %>
-		        </div>
-	        </div>        
-	      <% end %>
+			        <div id="divPreviousMeetings" class="large-4 columns end">
+				        <%#= select_tag(:sPreviousMeetings, options_from_collection_for_select(@meeting_date, :meeting_date, :meeting_date), prompt: 'Previous Meetings')  %>
+			        </div>
+		        <% end %>
+	        </div>
+        </div>        
+	      
 	</div>
 
 </div>
@@ -36,6 +33,6 @@
 		<%= render('to_do') %>
 	</div>
 	<div id="divForm" class="large-6 columns panel radius">
-  		<%#= render('form') %> 
+  		<%#= render('form') %>  
 	</div>
 </div>

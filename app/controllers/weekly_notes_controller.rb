@@ -2,69 +2,56 @@ class WeeklyNotesController < ApplicationController
   before_action :set_weekly_note, only: [:show, :edit, :update, :destroy]
   # skip_before_action :verify_authenticity_token
 
+
   def presentation
-# byebug
-  # if (params[:q] == nil || 
-  #     params[:q][:ward_cont] == "" || 
-  #     params[:meeting_date] == "")
-  #   params[:q] = {"ward_cont"=>"0/0"}
-  # end
-# byebug
-if params[:s_weekly_ward].nil?
-  @all_done = []
-  @all_to_do = []
-else
-  # Create @all_done an @all_to_do dependent upon what date should be used:
-  if params[:sPreviousMeetings] != ""
-    chosen_date = params[:sPreviousMeetings]
-    # Get all the Patients who have weekly notes from a given ward and date
-    @all_done = WeeklyNote.all_done(params, chosen_date)
 
-    # Get all Patients who do NOT have weekly notes from a given ward and date
-    @all_to_do = WeeklyNote.all_to_do(params, @all_done)
-# byebug
-  elsif params[:meeting_date] != ""
-    chosen_date = params[:meeting_date]
-    # Get all the Patients who have weekly notes from a given ward and date
-    @all_done = WeeklyNote.all_done(params, chosen_date)
+    if params[:s_weekly_ward].nil?
+      # Generate the 2d array needed for grouped select in view
+      @grouped_options = Pat.GroupedSelect('ward', ForSelect)
+    end
 
-    # Get all Patients who do NOT have weekly notes from a given ward and date
-    @all_to_do = WeeklyNote.all_to_do(params, @all_done)
-  else
     @all_done = []
     @all_to_do = []
-  end
-
-end
-
-  
-  
-
-
-  
-
-# byebug
-  # @q = @all_to_do.search(params[:q])   
-  # @all_to_do = @q.result.page(params[:page]).per(15)
-
-
-
-  # Generate the 2d array needed for grouped select in view
-  @grouped_options = Pat.GroupedSelect('ward', ForSelect)
-
-  
-
-  @meeting_date = WeeklyNote.select(:meeting_date).distinct.joins(:pat)
-                            .where(pats: {ward: params[:s_weekly_ward]})
-                            .order(meeting_date: :desc)
-                       
-# byebug
-  respond_to do |format|
-    format.html {}
-    format.js {}
-  end
+    @meeting_date = WeeklyNote.select(:meeting_date).distinct.joins(:pat)
+                              .where(pats: {ward: params[:s_weekly_ward]})
+                              .order(meeting_date: :desc)
+                         
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
     
   end
+
+  def meetings
+    # Create @all_done an @all_to_do dependent upon what date should be used:
+    if params[:sPreviousMeetings] != ""
+      chosen_date = params[:sPreviousMeetings]
+      # Get all the Patients who have weekly notes from a given ward and date
+      @all_done = WeeklyNote.all_done(params, chosen_date)
+
+      # Get all Patients who do NOT have weekly notes from a given ward and date
+      @all_to_do = WeeklyNote.all_to_do(params, @all_done)
+    elsif params[:meeting_date] != ""
+      chosen_date = params[:meeting_date]
+      # Get all the Patients who have weekly notes from a given ward and date
+      @all_done = WeeklyNote.all_done(params, chosen_date)
+
+      # Get all Patients who do NOT have weekly notes from a given ward and date
+      @all_to_do = WeeklyNote.all_to_do(params, @all_done)
+    else
+      @all_done = []
+      @all_to_do = []
+    end
+
+      respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+    
+  end
+
+  
 
   
 
