@@ -1,6 +1,6 @@
 class WeeklyNotesController < ApplicationController
-  before_action :set_weekly_note, only: [:show, :edit, :update, :destroy]
-  # skip_before_action :verify_authenticity_token
+  # before_action :set_weekly_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_weekly_note, only: [:show, :update, :destroy]
 
 
   def presentation
@@ -26,22 +26,23 @@ class WeeklyNotesController < ApplicationController
   def meetings
     # Create @all_done an @all_to_do dependent upon what date should be used:
     if params[:sPreviousMeetings] != ""
-      chosen_date = params[:sPreviousMeetings]
+      @chosen_date = params[:sPreviousMeetings]
       # Get all the Patients who have weekly notes from a given ward and date
-      @all_done = WeeklyNote.all_done(params, chosen_date)
+      @all_done = WeeklyNote.all_done(params, @chosen_date)
 
       # Get all Patients who do NOT have weekly notes from a given ward and date
       @all_to_do = WeeklyNote.all_to_do(params, @all_done)
     elsif params[:meeting_date] != ""
-      chosen_date = params[:meeting_date]
+      @chosen_date = params[:meeting_date]
       # Get all the Patients who have weekly notes from a given ward and date
-      @all_done = WeeklyNote.all_done(params, chosen_date)
+      @all_done = WeeklyNote.all_done(params, @chosen_date)
 
       # Get all Patients who do NOT have weekly notes from a given ward and date
       @all_to_do = WeeklyNote.all_to_do(params, @all_done)
     else
       @all_done = []
       @all_to_do = []
+      @chosen_date = ""
     end
 
       respond_to do |format|
@@ -82,6 +83,7 @@ class WeeklyNotesController < ApplicationController
     @weekly_note = WeeklyNote.new
     @pat = Pat.find(params[:id])
 
+
     respond_to do |format|
       format.html {render action: 'new'}
       format.js { render "new_edit"}
@@ -90,7 +92,16 @@ class WeeklyNotesController < ApplicationController
 
   # GET /weekly_notes/1/edit
   def edit
-    @pat = Pat.find(1)
+    @pat = Pat.find(params[:id])
+    @weekly_note = WeeklyNote.joins(:pat)
+                              .where(pats: {id: params[:id]})
+                              .where(weekly_notes: {meeting_date: params[:chosen_date]})
+                              .first
+
+    respond_to do |format|
+      format.html {render action: 'new'}
+      format.js { render "new_edit"}
+    end
   end
 
   # POST /weekly_notes

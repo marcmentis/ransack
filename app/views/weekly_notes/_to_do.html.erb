@@ -48,11 +48,13 @@
       </thead>
       <tbody>
         <% @all_done.each do |pat| %>
-          <tr>
+          <tr> 
             <!-- <td><%#= pat.facility_id %></td> -->
             <td><%= pat.lastname %> <%= pat.firstname %> <%= pat.number %> </td>
             <!-- <td><%#= link_to 'Show', pat %></td> -->
-            <td><%= link_to 'edit', new_with_pat_path(pat), class: 'lEdit', remote: true%></td>
+            <td><%= link_to 'edit', edit_weekly_note_path(pat, chosen_date: @chosen_date), remote: true%></td>
+            <!-- <td><a data-params="something=123" data-method="get" 
+    href="/weekly_notes/501/edit?now=5" rel="nofollow">edit2</a></td> -->
           </tr>
         <% end %>
         <tr>
