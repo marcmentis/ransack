@@ -2,9 +2,8 @@ class WeeklyNotesController < ApplicationController
   # before_action :set_weekly_note, only: [:show, :edit, :update, :destroy]
   before_action :set_weekly_note, only: [:show, :update, :destroy]
 
-
+  # GET/POST /weekly_notes/presentation(.:format)
   def presentation
-
     if params[:s_weekly_ward].nil?
       # Generate the 2d array needed for grouped select in view
       @grouped_options = Pat.GroupedSelect('ward', ForSelect)
@@ -23,7 +22,9 @@ class WeeklyNotesController < ApplicationController
     
   end
 
+  # GET weekly_notes/meetings(.:format)
   def meetings
+    # byebug
     # Create @all_done an @all_to_do dependent upon what date should be used:
     if params[:sPreviousMeetings] != ""
       @chosen_date = params[:sPreviousMeetings]
@@ -51,8 +52,6 @@ class WeeklyNotesController < ApplicationController
     end
     
   end
-
-  
 
   
 
@@ -93,6 +92,8 @@ class WeeklyNotesController < ApplicationController
   # GET /weekly_notes/1/edit
   def edit
     @pat = Pat.find(params[:id])
+    # Need to add .first to convert ActionRecord Relation to object
+      # _form needs an object passed to it
     @weekly_note = WeeklyNote.joins(:pat)
                               .where(pats: {id: params[:id]})
                               .where(weekly_notes: {meeting_date: params[:chosen_date]})
@@ -113,7 +114,9 @@ class WeeklyNotesController < ApplicationController
     respond_to do |format|
       if @weekly_note.save
         format.html { redirect_to @weekly_note, notice: 'Weekly note was successfully created.' }
-        format.js { render "update_create" }
+        # Added params to .js redirect. 
+          # Made meeting_date = to sPreviousMeetings as that is first condition tested in action 'meetings'
+        format.js { redirect_to action: 'meetings', t_ward: params[:th_ward], sPreviousMeetings: weekly_note_params[:meeting_date]}
         format.json { render action: 'show', status: :created, location: @weekly_note }
       else
         format.html { render action: 'new' }
