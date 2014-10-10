@@ -86,6 +86,10 @@ class WeeklyNotesController < ApplicationController
                               .where(pats: {id: params[:id]})
                               .where(weekly_notes: {meeting_date: params[:chosen_date]})
                               .first
+    # Get all meeting notes for patient
+    @pat_notes = WeeklyNote.joins(:pat)
+                          .where(weekly_notes: {pat_id: @pat[:id]})
+                          .order(meeting_date: :desc)
 
     respond_to do |format|
       format.html {render action: 'new'}

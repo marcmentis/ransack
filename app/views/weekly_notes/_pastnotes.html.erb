@@ -1,16 +1,21 @@
-<div><b>Past Meeting Notes</b></div>
-<div>
-  <%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
-</div>
+<div><b>Past Meeting Notes</b>  <%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %></div>
 
 <% @pat_notes.each do |note| %>
-<form>
-	<fieldset>
-		<legend>Meeting: <b><%= note.meeting_date %></b> </legend>
-		(entered: <%= note.updated_at.strftime('%F: %T') %> )
-		<div>Dangerous: <b><%= note.danger_yn %></b></div>
+	<div class="panel callout radius">
+		Meeting: <b><%= note.meeting_date %></b> 
+		(entered: <%= note.updated_at.strftime('%F %T') %> )
+		<div>
+			Dangerous: <b><%= note.danger_yn %></b>
+			&nbsp;&nbsp;&nbsp;Drugs Last Changed: <b><%= note.drugs_last_changed %></b>
+		</div>
+		<div>
+			Reason for drug last changed:<br />
+			<b><%= note.drugs_not_why %>
+			<%= note.drugs_change_why %></b>
+		</div>
+	</div>
+	
 		
-	</fieldset>
-</form>		
+		
 <% end %>
 
