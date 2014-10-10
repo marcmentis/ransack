@@ -1,6 +1,5 @@
-<div><b>Weekly Meeting Form</b></div>
-<div class="large-offset-1">
-  <%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
+<div><b>Weekly Meeting Form:</b>
+        &nbsp;&nbsp;<%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
 </div>
   
 <%= form_for(@weekly_note, remote: true) do |ff| %>
@@ -15,13 +14,13 @@
         </ul>
       </div>
     <% end %>
-    <div>
+    <div class="hide">
       <%= text_field_tag(:th_ward) %>
       <%#= text_field_tag(:th_previous_meetings) %>
       <%#= text_field_tag(:th_meeting_date) %>
     </div>
 
-    <div class="small-10 small-offset-1">
+    <div class="hide small-10 small-offset-1">
       <%= ff.label :pat_id %>
       <%= ff.text_field :pat_id, value: @pat.id %>
     </div>
