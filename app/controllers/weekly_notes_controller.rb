@@ -25,28 +25,12 @@ class WeeklyNotesController < ApplicationController
   # GET weekly_notes/meetings(.:format)
   def meetings
     # byebug
-    # Create @all_done an @all_to_do dependent upon what date should be used:
-    if params[:sPreviousMeetings] != ""
-      @chosen_date = params[:sPreviousMeetings]
-      # Get all the Patients who have weekly notes from a given ward and date
-      @all_done = WeeklyNote.all_done(params, @chosen_date)
+    all_lists = WeeklyNote.get_pat_lists(params)
+    @all_done = all_lists[:pat_all_done]
+    @all_to_do = all_lists[:pat_all_to_do]
+    @chosen_date = all_lists[:meeting_date]
 
-      # Get all Patients who do NOT have weekly notes from a given ward and date
-      @all_to_do = WeeklyNote.all_to_do(params, @all_done)
-    elsif params[:meeting_date] != ""
-      @chosen_date = params[:meeting_date]
-      # Get all the Patients who have weekly notes from a given ward and date
-      @all_done = WeeklyNote.all_done(params, @chosen_date)
-
-      # Get all Patients who do NOT have weekly notes from a given ward and date
-      @all_to_do = WeeklyNote.all_to_do(params, @all_done)
-    else
-      @all_done = []
-      @all_to_do = []
-      @chosen_date = ""
-    end
-
-      respond_to do |format|
+    respond_to do |format|
       format.html {}
       format.js {}
     end
@@ -81,6 +65,10 @@ class WeeklyNotesController < ApplicationController
   def new_with_pat
     @weekly_note = WeeklyNote.new
     @pat = Pat.find(params[:id])
+    # Get all meeting notes for patient
+    @pat_notes = WeeklyNote.joins(:pat)
+                          .where(weekly_notes: {pat_id: @pat[:id]})
+                          .order(meeting_date: :desc)
 
 
     respond_to do |format|
@@ -132,6 +120,7 @@ class WeeklyNotesController < ApplicationController
     respond_to do |format|
       if @weekly_note.update(weekly_note_params)
         format.html { redirect_to @weekly_note, notice: 'Weekly note was successfully updated.' }
+        format.js { redirect_to action: 'meetings', t_ward: params[:th_ward], sPreviousMeetings: weekly_note_params[:meeting_date]}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

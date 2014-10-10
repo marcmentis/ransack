@@ -1,0 +1,16 @@
+<div><b>Past Meeting Notes</b></div>
+<div>
+  <%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
+</div>
+
+<% @pat_notes.each do |note| %>
+<form>
+	<fieldset>
+		<legend>Meeting: <b><%= note.meeting_date %></b> </legend>
+		(entered: <%= note.updated_at.strftime('%F: %T') %> )
+		<div>Dangerous: <b><%= note.danger_yn %></b></div>
+		
+	</fieldset>
+</form>		
+<% end %>
+
