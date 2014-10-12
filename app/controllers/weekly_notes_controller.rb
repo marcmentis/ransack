@@ -93,6 +93,9 @@ class WeeklyNotesController < ApplicationController
                           .where(weekly_notes: {pat_id: @pat[:id]})
                           .order(meeting_date: :desc)
 
+    # Get CollectionsForSelect for drug and group selects
+    @drug_collection = Pat.CollectionForSelect('drugs_changed', ForSelect)
+
     respond_to do |format|
       format.html {render action: 'new'}
       format.js { render "new_edit"}

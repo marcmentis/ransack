@@ -1,3 +1,4 @@
+
 <div><b>Weekly Meeting Form:</b>
         &nbsp;&nbsp;<%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
 </div>
@@ -23,37 +24,39 @@
       <%= ff.text_field :pat_id, value: @pat.id %>
     </div>
     <div class="small-12 columns">
-      <%#= ff.label :danger_yn %>
-      <%#= ff.text_field :danger_yn %>
-      <b>1) Is danger to self/other, if in approved housing?</b><br />
-      "Yes" <%= ff.radio_button :danger_yn, "Y" %>
+        <strong>1) Is danger to self/other, if in approved housing?</strong>
+    </div>
+    <div class="small-11 small-offset-1 columns">
+        "Yes" <%= ff.radio_button :danger_yn, "Y" %>
       &nbsp;"No"  <%= ff.radio_button :danger_yn, "N" %>
     </div>
-    <div class="small-6 columns">
-      <b>2) When was med for Axis1/11 last changed?</b>
+    <div class="small-12 columns">
+      <strong>When was med for Axis1/11 last changed?</strong>
     </div>
-    <div id="divDrugsLastChanged" class="small-4 colums"></div>
+    <div id="divDrugsLastChanged" class="small-4 small-offset-1 colums"></div>
+    <div class="hide"><%= ff.text_field :drugs_last_changed %></div>
 
-    
-      <%#= ff.label :drugs_last_changed %>
-      <%= ff.text_field :drugs_last_changed %>
+    <div class="small-12 columns">
+      <strong></strong>
+    </div>
+      
 
-    <div class="small-10">
+    <div class="small-12 columns">
       <%#= ff.label :drugs_change_why %>
       <b>What med change was made for Axis 1/11 and why?</b><br />
       <%= ff.text_area :drugs_change_why %>
     </div>
-    <div class="small-10">
+    <div class="small-12 columns">
       <%#= ff.label :drugs_not_why %>
-      <b>Why not med change for Axis 1/11 disorder?</b><br />
+      <b>Why no med change for Axis 1/11 disorder?</b><br />
       <%= ff.text_area :drugs_not_why %>
     </div>   
-    <div class="hide small-10">
+    <div class="hide">
       <%= ff.label :meeting_date %>
       <%= ff.date_field :meeting_date %>
       <%#= f.date_select :meeting_date %>
     </div>
-    <div class="small-10 small-offset-1">
+    <div class="small-12 small-offset-1 columns">
     <%= ff.submit class: 'button tiny radius' %>
     <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>
     </div>

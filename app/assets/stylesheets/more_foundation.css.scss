@@ -6,6 +6,11 @@ $warning-color: #f08a24;
 $info-color: #a0d3e8;
 
 
+.row {
+	// max-width: 62.5em
+	//max-width: 90em;
+}
+
  /* Hover color change over table rows */
 tbody tr:hover {
 	background-color: #beecff;
