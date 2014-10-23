@@ -26,3 +26,17 @@
 // SELECTS
 	$('#divDrugsLastChanged').html("<%= j select_tag(:sdrug_collection, options_from_collection_for_select(@drug_collection, :value, :text), prompt: 'Drugs Changed') %>")	
 
+	$('#sdrug_collection').change(function(){
+		var duration = $(this).val();
+
+		if (duration == 'Gt 8 weeks') {
+			$('#divWhyNoMedChange').show();
+			$('#divWhatMedChange').hide();
+			$('#weekly_note_drugs_change_why').val('');
+		} else {
+			$('#divWhatMedChange').show();
+			$('#divWhyNoMedChange').hide();
+			$('#weekly_note_drugs_not_why').val('');
+		};
+	});
+
