@@ -2,7 +2,7 @@
 	$('#divForm').html("<%= j render('form') %>");
 	$('#divPastNotes').html("<%= j render('pastnotes') %>")
 
-// VARIABLES
+// VARIABLES 
 	ward = $('#s_weekly_ward').val();
 	new_meeting = $('#meeting_date').val();
 	previous_meetings = $('#sPreviousMeetings').val();
@@ -39,4 +39,27 @@
 			$('#weekly_note_drugs_not_why').val('');
 		};
 	});
+
+// Different presentation if new or edit
+	// Need to 'reset' new_edit to 'undefined' otherwise if last value was real can persisst
+	var new_edit = 'undefined' 
+	var drugs_not_why = ''
+	var drugs_change_why = ''
+	var drugs_last_changed = ''
+	new_edit =  <%= @weekly_note.id %> 
+	drugs_not_why = ' <%= j @weekly_note.drugs_not_why %> '
+	drugs_change_why = ' <%= j @weekly_note.drugs_change_why %> '
+	drugs_last_changed = ' <%= j @weekly_note.drugs_last_changed %> '
+		alert(drugs_not_why.length);
+		alert(drugs_change_why.length);
+		alert(drugs_last_changed)
+	if (drugs_not_why.length > 2) {
+		$('#divWhyNoMedChange').show();
+		$('#divWhatMedChange').hide();
+	}; 
+	if (drugs_change_why.length > 2) {
+		$('#divWhyNoMedChange').hide();
+		$('#divWhatMedChange').show();
+	}; 
+
 
