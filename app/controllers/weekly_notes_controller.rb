@@ -126,6 +126,7 @@ class WeeklyNotesController < ApplicationController
   # PATCH/PUT /weekly_notes/1
   # PATCH/PUT /weekly_notes/1.json
   def update
+# byebug
     respond_to do |format|
       if @weekly_note.update(weekly_note_params)
         format.html { redirect_to @weekly_note, notice: 'Weekly note was successfully updated.' }

@@ -30,15 +30,13 @@
         "Yes" <%= ff.radio_button :danger_yn, "Y" %>
       &nbsp;"No"  <%= ff.radio_button :danger_yn, "N" %>
     </div>
-    <div class="small-12 columns">
-      <strong>When was med for Axis1/11 last changed?</strong>
-    </div>
-    <div id="divDrugsLastChanged" class="small-4 small-offset-1 colums"></div>
-    <div class="hide"><%= ff.text_field :drugs_last_changed %></div>
 
-    <div class="small-12 columns">
-      <strong></strong>
+    <div id="divWhenMedChanged" class="small-12 columns hide">
+        <strong>When was med for Axis1/11 last changed?</strong>
+      <div id="divDrugsLastChanged" class="small-4 colums"></div>    
+      <div class="hide"><%= ff.text_field :drugs_last_changed %></div>
     </div>
+
       
 
     <div id="divWhatMedChange" class="small-12 columns hide">
@@ -48,7 +46,7 @@
     </div>
     <div id="divWhyNoMedChange" class="small-12 columns hide">
       <%#= ff.label :drugs_not_why %>
-      <b>Why no med change for Axis 1/11 disorder?</b><br />
+      <strong>Why no med change for Axis 1/11 disorder?</strong><br />
       <%= ff.text_area :drugs_not_why %>
     </div>   
     <div class="hide">
@@ -56,7 +54,7 @@
       <%= ff.date_field :meeting_date %>
       <%#= f.date_select :meeting_date %>
     </div>
-    <div class="small-12 small-offset-1 columns">
+    <div class="small-12 small-offset-2 columns">
     <%= ff.submit class: 'button tiny radius' %>
     <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>
     </div>

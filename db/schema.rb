@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002170309) do
+ActiveRecord::Schema.define(version: 20141025155311) do
 
   create_table "facilities", force: true do |t|
     t.string   "name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20141002170309) do
   end
 
   create_table "pats", force: true do |t|
-    t.string   "firstname"
+    t.text     "firstname",   limit: 255
     t.string   "lastname"
     t.string   "number"
     t.datetime "created_at"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20141002170309) do
 
   add_index "pats", ["facility_id"], name: "index_pats_on_facility_id"
 
+  create_table "products", force: true do |t|
+    t.text     "name",       limit: 255
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "weekly_notes", force: true do |t|
     t.string   "danger_yn"
     t.string   "drugs_last_changed"
@@ -54,6 +61,9 @@ ActiveRecord::Schema.define(version: 20141002170309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pat_id"
+    t.string   "pre_date_yesno"
+    t.text     "pre_date_no_why"
+    t.date     "date_pre"
   end
 
   add_index "weekly_notes", ["pat_id"], name: "index_weekly_notes_on_pat_id"
