@@ -1,5 +1,5 @@
 
-<div><b>Weekly Meeting Form:</b>
+<div><strong>Weekly Meeting Form:</strong>
         &nbsp;&nbsp;<%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
 </div>
   
@@ -17,46 +17,68 @@
     <% end %>
     <div class="hide">
       <%= text_field_tag(:th_ward) %>
-    </div>
-
-    <div class="hide small-10 small-offset-1 columns">
-      <%= ff.label :pat_id %>
-      <%= ff.text_field :pat_id, value: @pat.id %>
-    </div>
-    <div class="small-12 columns">
-        <strong>1) Is danger to self/other, if in approved housing?</strong>
-    </div>
-    <div class="small-11 small-offset-1 columns">
-        "Yes" <%= ff.radio_button :danger_yn, "Y" %>
-      &nbsp;"No"  <%= ff.radio_button :danger_yn, "N" %>
-    </div>
-
-    <div id="divWhenMedChanged" class="small-12 columns hide">
-        <strong>When was med for Axis1/11 last changed?</strong>
-      <div id="divDrugsLastChanged" class="small-4 colums"></div>    
-      <div class="hide"><%= ff.text_field :drugs_last_changed %></div>
-    </div>
-
-      
-
-    <div id="divWhatMedChange" class="small-12 columns hide">
-      <%#= ff.label :drugs_change_why %>
-      <b>What med change was made for Axis 1/11 and why?</b><br />
-      <%= ff.text_area :drugs_change_why %>
-    </div>
-    <div id="divWhyNoMedChange" class="small-12 columns hide">
-      <%#= ff.label :drugs_not_why %>
-      <strong>Why no med change for Axis 1/11 disorder?</strong><br />
-      <%= ff.text_area :drugs_not_why %>
-    </div>   
-    <div class="hide">
-      <%= ff.label :meeting_date %>
+      <%#= ff.label :meeting_date %>
       <%= ff.date_field :meeting_date %>
       <%#= f.date_select :meeting_date %>
+      <%#= ff.label :pat_id %>
+      <%= ff.text_field :pat_id, value: @pat.id %>
     </div>
+
+    <!-- QUESTION ONE: DANGEROUS YES/NO -->
+    <strong>1) Is danger to self/other, if in approved housing?</strong>
+      <div class="small-12 columns">
+        <div class="small-12 small-offset-1 columns">
+            "Yes" <%= ff.radio_button :danger_yn, "Y" %>
+          &nbsp;"No"  <%= ff.radio_button :danger_yn, "N" %>
+        </div>
+      </div> 
+
+    <!-- IF DANGEROUS - DRUG QUESTIONS -->
+      <div id="divWhenMedChanged" class="small-12 columns hide">
+          <strong>When was med for Axis1/11 last changed?</strong>
+        <div id="divDrugsLastChanged" class="small-4 colums"></div>    
+        <div class="hide"><%= ff.text_field :drugs_last_changed %></div>
+      </div>
+
+      <div id="divWhatMedChange" class="small-12 columns hide">
+        <%#= ff.label :drugs_change_why %>
+        <strong>What med change was made for Axis 1/11 and why?</strong><br />
+        <%= ff.text_area :drugs_change_why %>
+      </div>
+
+      <div id="divWhyNoMedChange" class="small-12 columns hide">
+        <%#= ff.label :drugs_not_why %>
+        <strong>Why no med change for Axis 1/11 disorder?</strong><br />
+        <%= ff.text_area :drugs_not_why %>
+      </div> 
+
+    <!-- IF NOT DANGEROUS - HOUSING QUESTIONS  -->
+      <div id="divHousingDateSet" class="small-12 columns hide">
+        <strong>Has date been set for Housing Meeting?</strong>      
+        <div class="small-12 small-offset-1 columns">
+            "Yes" <%= ff.radio_button :pre_date_yesno, "Y" %>
+          &nbsp;"No"  <%= ff.radio_button :pre_date_yesno, "N" %>
+        </div> 
+      </div>
+
+      <div id="divPreDate" class="small-12 columns hide">
+        <strong>Date:</strong>
+        <div class="small-5 end"> <%= ff.date_field :date_pre %> </div>
+      </div>
+
+      <div id="divWhyNoPreDateSet" class="small-12 columns hide">
+        <strong>Why has no date been set for Housing Meeting?</strong><br />
+        <%= ff.text_area :pre_date_no_why %>
+      </div>
+
+
+
+ 
+
+    <!-- UPDATE/CREATE DELETE BUTTONS -->
     <div class="small-12 small-offset-2 columns">
-    <%= ff.submit class: 'button tiny radius' %>
-    <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>
+      <%= ff.submit class: 'button tiny radius' %>
+      <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>
     </div>
   </div>
 <% end %>

@@ -157,7 +157,8 @@ class WeeklyNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weekly_note_params
-      params.require(:weekly_note).permit(:pat_id, :danger_yn, :drugs_last_changed, :drugs_not_why, :drugs_change_why, :meeting_date)
+      params.require(:weekly_note).permit(:pat_id, :danger_yn, :drugs_last_changed, :drugs_not_why, 
+        :drugs_change_why, :meeting_date, :pre_date_yesno, :pre_date_no_why, :date_pre)
     end
 
 end

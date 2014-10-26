@@ -21,8 +21,7 @@
 
 	var drugs_not_why = ' <%= j @weekly_note.drugs_not_why %> '
 	var drugs_change_why = ' <%= j @weekly_note.drugs_change_why %> '
-	var drugs_last_changed = $.trim(' <%= j @weekly_note.drugs_last_changed %> ');
-	
+	var drugs_last_changed = $.trim(' <%= j @weekly_note.drugs_last_changed %> ');	
 
 // BUTTONS
 	$('#bCancel').click(function(){
@@ -35,21 +34,63 @@
 	$(':radio').change(function(){
 		name = $(this).attr('name');
 		value = $(this).val();
+		// If radio button is danger_yn
 		if (name == 'weekly_note[danger_yn]' && value == 'Y') {
+			quest1HideAndEmptyAllFields();
 			$('#divWhenMedChanged').show();
-		} else if (name == 'weekly_note[danger_yn]' && value == 'N') {
-			alert('PLACE PRE STUFF HERRE')
-			// Hide all drug stuff and set to ''
-			$('#divWhenMedChanged').hide();
-			$('#divWhyNoMedChange').hide();
-			$('#divWhatMedChange').hide();
-			$('#sdrug_collection').val('');
-			$('#weekly_note_drugs_last_changed').val('')
-			$('#weekly_note_drugs_change_why').val('');
-			$('#weekly_note_drugs_not_why').val('');
 			
+		} else if (name == 'weekly_note[danger_yn]' && value == 'N') {
+			quest1HideAndEmptyAllFields();
+			$('#divHousingDateSet').show();			
+		};
+
+		// If radio button is pre_date_yesno
+		if (name == 'weekly_note[pre_date_yesno]' && value == 'Y' ) {
+			quest1HideAndEmptyAllFields();
+			$('#divPreDate').show();
+		} else if (name == 'weekly_note[pre_date_yesno]' && value == 'N') {
+			quest1HideAndEmptyAllFields();
+			$('#divWhyNoPreDateSet').show();
 		};
 	});
+
+// FUNCTIONS USED
+	function quest1HideAndEmptyAllFields(){
+		// Hide all drug field divs
+		$('#divWhenMedChanged').hide();
+		$('#divWhyNoMedChange').hide();
+		$('#divWhatMedChange').hide();
+		// Empty all drug fields
+		$('#sdrug_collection').val('');
+		$('#weekly_note_drugs_last_changed').val('')
+		$('#weekly_note_drugs_change_why').val('');
+		$('#weekly_note_drugs_not_why').val('');
+		// Hide all housing divs
+		$('#divWhyNoPreDateSet').hide();
+		$('#divPreDate').hide();
+		// Empty all housing fields
+		$('#weekly_note_date_pre').val('');
+		$('#weekly_note_pre_date_no_why').val('');
+	};
+	function hideDrugFields(){
+		$('#divWhenMedChanged').hide();
+		$('#divWhyNoMedChange').hide();
+		$('#divWhatMedChange').hide();
+	};
+	function setDrugFieldsEmpty(){
+		$('#sdrug_collection').val('');
+		$('#weekly_note_drugs_last_changed').val('')
+		$('#weekly_note_drugs_change_why').val('');
+		$('#weekly_note_drugs_not_why').val('');
+	};
+	function hideHousingFields(){
+		$('#divWhyNoPreDateSet').hide();
+		$('#divPreDate').hide();
+	};
+	function setHousingFieldsEmpty(){
+		$('#weekly_note_date_pre').val('');
+		$('#weekly_note_pre_date_no_why').val('');
+	};
 
 // SELECTS
 	// Generate select 'sdrug_collection'
