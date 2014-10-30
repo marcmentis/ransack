@@ -1,5 +1,8 @@
 <div>
-	<strong>Past Notes</strong>  <%= @pat.firstname %> <%= @pat.lastname %> <%= @pat.number %> <%= @pat.ward %>
+	<strong>Past Notes</strong>  
+	&nbsp;&nbsp;<span class="alertText"><%= @pat.firstname %> <%= @pat.lastname %> </span>
+    &nbsp;&nbsp;<%= @pat.number %> 
+    &nbsp;&nbsp;<%= @pat.ward %>
 </div>
 
 <% @pat_notes.each do |note| %>
