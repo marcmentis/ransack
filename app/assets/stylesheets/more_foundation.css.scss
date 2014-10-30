@@ -16,6 +16,11 @@ $info-color: #a0d3e8;
 .alertText {
 	color: $alert-color;
 }
+.alignRtNoPadding {
+	text-align: right;
+	padding-left: 0rem;
+	padding-right: 0rem;
+}
 
 /* TABLE  */
  /* Hover color change over table rows */
