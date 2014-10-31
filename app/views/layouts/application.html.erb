@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "weekly_layout" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,9 +12,12 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %> 
+    <!-- Having a container row allows control of the size of the site -->
+    <div id="divContainer" class="row"><div class="large-12 columns">    
+      <%= render "layouts/header" %> 
 
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
+      <%= yield %>
+      <%= javascript_include_tag "application" %>
+    </div></div> <!-- end div id="divContainer" -->
   </body>
 </html>
