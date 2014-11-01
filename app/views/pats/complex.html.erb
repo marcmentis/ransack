@@ -75,9 +75,9 @@
             <td><%= pat.lastname %></td>
             <td><%= pat.number %></td>
             <td><%= pat.ward %></td>
-            <td><%= pat.doa %></td>
-            <td><%= pat.dob %></td>
-            <td><%= pat.dod %></td>
+            <td><%= pat.doa.strftime('%F') %></td>
+            <td><%= pat.dob.strftime('%F') %></td>
+            <td><%= pat.dod.strftime('%F') %></td>
           </tr>
         <% end %>
           <tr>
