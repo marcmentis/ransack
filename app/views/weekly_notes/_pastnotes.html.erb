@@ -7,8 +7,8 @@
 
 <% @pat_notes.each do |note| %>
 	<div class="panel callout radius size12Line14">
-		<strong>Meeting:</strong> <%= note.meeting_date %>
-		(entered: <%= note.updated_at.strftime('%F %T') %> )
+		<strong>Meeting:</strong> <%= note.meeting_date.strftime('%F') %>
+		(entered: <%= note.updated_at.strftime('%F %R') %> )
 
 		<% if note.danger_yn == 'Y' %>
 			<!-- IF Dangerous = YES -->
