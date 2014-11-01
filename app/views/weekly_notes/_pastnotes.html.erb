@@ -30,7 +30,11 @@
 			</div>
 			<% if note.pre_date_yesno == 'Y' %>
 				<div>
-					<strong>Date:</strong> <%= note.date_pre %>
+					<% unless note.date == nil %>
+						<strong>Date:</strong> <%= note.date_pre.strftime('%F') %>
+					<% else %>
+						<strong>Date:</strong> ERROR NO DATE %>
+					<% end %>
 				</div>
 			<% elsif note.pre_date_yesno == 'N' %>
 				<div>

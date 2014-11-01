@@ -14,7 +14,10 @@ class WeeklyNotesController < ApplicationController
     @meeting_date = WeeklyNote.select(:meeting_date).distinct.joins(:pat)
                               .where(pats: {ward: params[:s_weekly_ward]})
                               .order(meeting_date: :desc)
-                         
+ # byebug 
+    @meeting_date.to_a.map! {|meeting| meeting.meeting_date.strftime('%F')}
+    # @meeting_date.to_a
+
     respond_to do |format|
       format.html {}
       format.js {}
