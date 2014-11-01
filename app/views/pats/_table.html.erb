@@ -90,9 +90,22 @@
           <td><%= pat.lastname %></td>
           <td><%= pat.number %></td>
           <td><%= pat.ward %></td>
-          <td><%= pat.doa.strftime('%F') %></td>
-          <td><%= pat.dob.strftime('%F') %></td>
-          <td><%= pat.dod.strftime('%F') %></td>
+          <% unless pat.doa == nil %>
+            <td><%= pat.doa.strftime('%F') %></td>
+          <% else %>
+            <td> </td>
+          <% end %>
+          <% unless pat.dob == nil %>
+            <td><%= pat.dob.strftime('%F') %></td>
+          <% else %>
+            <td> </td>
+          <% end %>
+          <% unless pat.dod == nil %>
+            <td><%= pat.dod.strftime('%F') %></td>
+          <% else %>
+            <td> </td>
+          <% end %>
+
           <!-- <td><%#= link_to 'Show', pat %></td> -->
           <td><%= link_to 'Edit', edit_pat_path(pat), class: 'lEdit', remote: true%></td>
           <td><%= link_to 'Destroy', pat, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>

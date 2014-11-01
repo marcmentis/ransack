@@ -75,9 +75,21 @@
             <td><%= pat.lastname %></td>
             <td><%= pat.number %></td>
             <td><%= pat.ward %></td>
-            <td><%= pat.doa.strftime('%F') %></td>
-            <td><%= pat.dob.strftime('%F') %></td>
-            <td><%= pat.dod.strftime('%F') %></td>
+            <% unless pat.doa == nil %>
+              <td><%= pat.doa.strftime('%F') %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+            <% unless pat.dob == nil %>
+              <td><%= pat.dob.strftime('%F') %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+            <% unless pat.dod == nil %>
+              <td><%= pat.dod.strftime('%F') %></td>
+            <% else %>
+              <td></td>
+            <% end %>
           </tr>
         <% end %>
           <tr>
