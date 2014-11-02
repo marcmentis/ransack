@@ -15,7 +15,7 @@ gem 'rails', '4.0.2'
 	group :development, :test do
 	  gem 'sqlite3'
 	  gem 'rspec-rails', '2.13.1'  #access to RSpec generators
-	  gem 'faker'
+	  # gem 'faker' '~> 1.4.3'
 	  gem 'byebug'
 	end
 
@@ -36,10 +36,12 @@ gem 'rails', '4.0.2'
 	group :production do
 	  gem "activerecord-oracle_enhanced-adapter", "~> 1.5.0"
 	  gem 'ruby-oci8', '~> 2.1.0'
+	  gem 'faker', '~> 1.4.3'
 	end
 
 	# group :production do
-	#   gem 'sqlite3', '1.3.8'
+	#   gem 'sqlite3'
+	#   gem 'faker', '~> 1.4.3'
 	# end
 
 # Use SCSS for stylesheets
