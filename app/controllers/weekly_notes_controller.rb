@@ -43,6 +43,7 @@ class WeeklyNotesController < ApplicationController
       format.js {}
     end
     
+  
   end
 
   
