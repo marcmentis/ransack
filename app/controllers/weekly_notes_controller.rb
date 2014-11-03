@@ -15,8 +15,13 @@ class WeeklyNotesController < ApplicationController
                               .where(pats: {ward: params[:s_weekly_ward]})
                               .order(meeting_date: :desc)
  # byebug 
+    # Need to convert the ActiveRecord Relation to an array
+      # Oracle doesn't present meeting_date as a formatted string
+      # Need to format meeting_date (can't do that in the @meeting_date relation)
+      # Creating an @meetin_date ARRAY can use "options_for_select(@meeting_date)"
+      # in presentation.js.erb for the previous meeting date select.
+      # ( The ActiveRecord Relation uses "options_from_collection_for_select")
     @meeting_date.to_a.map! {|meeting| meeting.meeting_date.strftime('%F')}
-    # @meeting_date.to_a
 
     respond_to do |format|
       format.html {}
