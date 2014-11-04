@@ -1,0 +1,6 @@
+<div class="panel callout radius">
+	<%= search_form_for(@q, url: clin_trackers_path) do |f| %>
+		<%= f.submit class: 'button tiny radius' %>
+		ward: <%= f.search_field :ward_cont %>
+	<% end %>						
+</div>

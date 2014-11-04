@@ -19,12 +19,13 @@ ForSelect.create!(facility_id: 10000, code: 'ward', value: '25/2N', text: '25/2N
 ForSelect.create!(facility_id: 10000, code: 'ward', value: '25/2S', text: '25/2S', option_order: 9, grouper: 'bld25')
 ForSelect.create!(facility_id: 10000, code: 'ward', value: '25/3N', text: '25/3N', option_order: 10, grouper: 'bld25')
 ForSelect.create!(facility_id: 10000, code: 'ward', value: '25/3S', text: '25/2S', option_order: 11, grouper: 'bld25')
+ForSelect.create!(facility_id: 10000, code: 'ward', value: 'd/c', text: 'd/c', option_order: 12, grouper: 'd/c')
 ForSelect.create!(facility_id: 10000, code: 'drugs_changed', value: '0-2 weeks', text: '0-2 weeks', option_order: 1)
 ForSelect.create!(facility_id: 10000, code: 'drugs_changed', value: '2-8 weeks', text: '2-8 weeks', option_order: 2)
-ForSelect.create!(facility_id: 10000, code: 'drugs_changed', value: 'Gt 8 weeks', text: 'Gt 8 weeks', option_order: 1)
+ForSelect.create!(facility_id: 10000, code: 'drugs_changed', value: 'Gt 8 weeks', text: 'Gt 8 weeks', option_order: 3)
 ForSelect.create!(facility_id: 10000, code: 'group_changed', value: '0-1 month', text: '0-1 month', option_order: 1)
-ForSelect.create!(facility_id: 10000, code: 'group_changed', value: '1-3 months', text: '1-3 months', option_order: 1)
-ForSelect.create!(facility_id: 10000, code: 'group_changed', value: 'Gt 3 months', text: 'Gt 3 months', option_order: 1)
+ForSelect.create!(facility_id: 10000, code: 'group_changed', value: '1-3 months', text: '1-3 months', option_order: 2)
+ForSelect.create!(facility_id: 10000, code: 'group_changed', value: 'Gt 3 months', text: 'Gt 3 months', option_order: 3)
 
 
 

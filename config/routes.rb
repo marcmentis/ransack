@@ -1,5 +1,5 @@
 Startup4002::Application.routes.draw do
-  get "clin_trackers/index"
+  resources :clin_trackers
   resources :weekly_notes do
     collection do
       match 'presentation' => 'weekly_notes#presentation', via: [:get, :post], as: :presentation
