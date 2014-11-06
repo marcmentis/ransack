@@ -1,6 +1,11 @@
 class PatsController < ApplicationController
   before_action :set_pat, only: [:show, :edit, :update, :destroy]
 
+  def requestresponse
+    @request = request
+    @response = response
+  end
+
   # GET /pats
   # GET /pats.json
   def index
