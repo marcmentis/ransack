@@ -41,8 +41,14 @@
   	<li><strong>HTTP_ACCEPT:</strong> <%= @request.env["HTTP_ACCEPT"]%></li>
   	<li><strong>REQUEST_METHOD:</strong> <%= @request.env["REQUEST_METHOD"]%></li>
   	<li><strong>HTTP_CONNECTION:</strong> <%= @request.env["HTTP_CONNECTION"]%></li>
-  	<li><strong>HEADERS REMOTE_USER:</strong> <%= @request.headers["REMOTE_USER"]%></li>
+  	<li><strong>headers["REMOTE_USER"]:</strong> <%= @request.headers["REMOTE_USER"]%></li>
   	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
+  	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
+  	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
+  	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
+  	<% @request.headers.each do |key, value| %>
+  		<li>Key: <%= key %> Value: <%= value %></li>
+  	<% end %>
   	<br />
   	<li><strong>host:</strong> <%= @request.host%></li>
   	<li><strong>domain(n=2):</strong> <%= @request.domain(n=2) %></li>
@@ -66,6 +72,9 @@
   	<li><strong>content_type:</strong>  <%= @response.content_type%></li>
   	<li><strong>charset:</strong>  <%= @response.charset%></li>
   	<li><strong>Headers hash:</strong>  <%= @response.headers%></li>
+  	<% @response.headers.each do |key, value| %>
+  		<li>Key: <%= key %> Value: <%= value %></li>
+  	<% end %>
   </ul>
  
 </p>
