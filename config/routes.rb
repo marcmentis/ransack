@@ -1,5 +1,5 @@
 Startup4002::Application.routes.draw do
-  get 'requestresponse' => 'pats#requestresponse'
+
   resources :weekly_notes do
     collection do
       match 'presentation' => 'weekly_notes#presentation', via: [:get, :post], as: :presentation
