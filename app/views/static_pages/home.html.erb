@@ -18,34 +18,15 @@
 <p>
   <h3>Request Object:</h3>
   <ul>
-  	<li><strong>SERVER_NAME:</strong> <%= @request.env["SERVER_NAME"]%></li>
-  	<li><strong>PATH_INFO:</strong> <%= @request.env["PATH_INFO"]%></li>
-  	<li><strong>REMOTE_HOST:</strong> <%= @request.env["REMOTE_HOST"]%></li>
-  	<li><strong>HTTP_ACCEPT_ENCODING:</strong> <%= @request.env["HTTP_ACCEPT_ENCODING"]%></li>
-  	<li><strong>HTTP_USER_AGENT:</strong> <%= @request.env["HTTP_USER_AGENT"]%></li>
-  	<li><strong>SERVER_PROTOCOL:</strong> <%= @request.env["SERVER_PROTOCOL"]%></li>
-  	<li><strong>HTTP_CACHE_CONTROL:</strong> <%= @request.env["HTTP_CACHE_CONTROL"]%></li>
-  	<li><strong>HTTP_ACCEPT_LANGUAGE:</strong> <%= @request.env["HTTP_ACCEPT_LANGUAGE"]%></li>
-  	<li><strong>HTTP_HOST:</strong> <%= @request.env["HTTP_HOST"]%></li>
-  	<li><strong>REMOTE_ADDR:</strong> <%= @request.env["REMOTE_ADDR"]%></li>
-  	<li><strong>SERVER_SOFTWARE:</strong> <%= @request.env["SERVER_SOFTWARE"]%></li>
-  	<li><strong>HTTP_KEEP_ALIVE:</strong> <%= @request.env["HTTP_KEEP_ALIVE"]%></li>
-  	<li><strong>HTTP_REFERER:</strong> <%= @request.env["HTTP_REFERER"]%></li>
-  	<li><strong>HTTP_COOKIE:</strong> <%= @request.env["HTTP_COOKIE"]%></li>
-  	<li><strong>HTTP_ACCEPT_CHARSET:</strong> <%= @request.env["HTTP_ACCEPT_CHARSET"]%></li>
-  	<li><strong>REQUEST_URI:</strong> <%= @request.env["REQUEST_URI"]%></li>
-  	<li><strong>SERVER_PORT:</strong> <%= @request.env["SERVER_PORT"]%></li>
-  	<li><strong>GATEWAY_INTERFACE:</strong> <%= @request.env["GATEWAY_INTERFACE"]%></li>
-  	<li><strong>QUERY_STRING:</strong> <%= @request.env["QUERY_STRING"]%></li>
-  	<li><strong>REMOTE_USER:</strong> <%= @request.env["REMOTE_USER"]%></li>
-  	<li><strong>HTTP_ACCEPT:</strong> <%= @request.env["HTTP_ACCEPT"]%></li>
-  	<li><strong>REQUEST_METHOD:</strong> <%= @request.env["REQUEST_METHOD"]%></li>
-  	<li><strong>HTTP_CONNECTION:</strong> <%= @request.env["HTTP_CONNECTION"]%></li>
-  	<li><strong>headers["REMOTE_USER"]:</strong> <%= @request.headers["REMOTE_USER"]%></li>
-  	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
-  	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
-  	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
-  	<li><strong>headers["Content-Type"]:</strong> <%= @request.headers["Content-Type"]%></li>
+    <li><strong>headers["HTTP_CT_REMOTE_USER"]:</strong> <%= @request.headers["HTTP_CT_REMOTE_USER"]%></li>
+  	<li><strong>headers["HTTP_REMOTE_USER"]:</strong> <%= @request.headers["HTTP_REMOTE_USER"]%></li>
+  	<li><strong>headers["HTTP_USER_AGENT"]:</strong> <%= @request.headers["HTTP_USER_AGENT"]%></li>
+  	<li><strong>headers["HTTP_OMHFACILITYNUM"]:</strong> <%= @request.headers["HTTP_OMHFACILITYNUM"]%></li>
+  	<li><strong>headers["HTTP_CTFN"]:</strong> <%= @request.headers["HTTP_CTFN"]%></li>
+  	<li><strong>headers["HTTP_INITIALS"]:</strong> <%= @request.headers["HTTP_INITIALS"]%></li>
+  	<li><strong>headers["HTTP_CTLN"]:</strong> <%= @request.headers["HTTP_INITIALS"]%></li>
+  	<li><strong>headers["HTTP_CTEMAIL"]:</strong> <%= @request.headers["HTTP_CTEMAIL"]%></li>
+
   	<% @request.headers.each do |key, value| %>
   		<li>Key: <%= key %> Value: <%= value %></li>
   	<% end %>
