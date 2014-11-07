@@ -30,6 +30,16 @@ class WeeklyNotesController < ApplicationController
     
   end
 
+  # GET weekly_notes/meetingtrackers(.:format)
+  def meetingtracker
+byebug
+    @q = WeeklyNote.search(params[:q])
+    @weeklyNotes = @q.result.page(params[:page]).per(15)
+
+    @totNumber = WeeklyNote.all.count
+    @searchNumber = @q.result.count
+  end
+
   # GET weekly_notes/meetings(.:format)
   def meetings
     # byebug

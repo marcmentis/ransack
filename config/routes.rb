@@ -1,9 +1,10 @@
-Startup4002::Application.routes.draw do
+ Startup4002::Application.routes.draw do
   resources :clin_trackers
   resources :weekly_notes do
     collection do
       match 'presentation' => 'weekly_notes#presentation', via: [:get, :post], as: :presentation
       get 'meetings'
+      get 'meetingtracker'
     end
   end
   # Make named path for weekly_notes "new" to pass pat id

@@ -1,5 +1,5 @@
 <div class="large-9 columns">
-<div class="panel">
+<div class="panel radius">
   <div class="panel callout radius">
      <%= search_form_for @q, remote: true do |f| %>
         <div class="row collapse">
@@ -44,15 +44,16 @@
                 <%= f.label(:doa_cont, "DOA", class: "right inline", title: "DOA between", data: {tooltip: true})  %>
               </div>
               <div class="small-3 left columns">
-                <%#= f.date_field :doa_cont %>
+                <%= f.date_field :doa_gteq %>
                 <%#= f.date_select :doa_cont %>
-                <%= f.search_field :doa_gteq%>
+                <%#= f.search_field :doa_gteq%>
               </div>
               <div class="small-1 column ">
                 <%= f.label :doa, "to", class: "right inline" %>
               </div>
               <div class="small-3 left columns">
-                <%= f.search_field :doa_lteq %> 
+                <%= f.date_field :doa_lteq %>
+                <%#= f.search_field :doa_lteq %> 
               </div>         
             </div>
           </div>
