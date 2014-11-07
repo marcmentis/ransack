@@ -5,6 +5,7 @@
       match 'presentation' => 'weekly_notes#presentation', via: [:get, :post], as: :presentation
       get 'meetings'
       get 'meetingtracker'
+      get 'meetingtrackertable'
     end
   end
   # Make named path for weekly_notes "new" to pass pat id

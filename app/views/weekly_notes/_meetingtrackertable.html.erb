@@ -1,0 +1,38 @@
+<table>
+	<thead>
+		<tr class="tableHeader">
+			<th><%= sort_link(@q, :danger_yn) %></th>
+			<th><%= sort_link(@q, :meeting_date) %></th>
+			<th><%= sort_link(@q, :drugs_last_changed) %></th>
+			<th><%= sort_link(@q, :pre_date_yesno) %></th>
+			<th><%= sort_link(@q, :date_pre) %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @weeklyNotes.each do |note| %>
+			<tr>
+				<td><%= note.danger_yn %></td>
+				<% unless note.meeting_date.blank? %>
+					<td><%= note.meeting_date.strftime('%F') %></td>
+				<% else %>
+					<td></td>
+				<% end %>
+				<td><%= note.drugs_last_changed %></td>
+				<td><%= note.pre_date_yesno %></td>
+				<% unless note.date_pre.blank? %>
+					<td><%= note.date_pre.strftime('%F') %></td>
+				<% else %>
+					<td></td>
+			</tr>
+				<% end %>						
+		<% end %>
+		<tr>
+			<td colspan="3" class="tableFooter">
+				<%= paginate @weeklyNotes %>
+			</td>
+			<td colspan="2" class="tableFooter">
+				 <%= @searchNumber %>  from <%= @totNumber %> total
+			</td>
+		</tr>
+	</tbody>
+</table>

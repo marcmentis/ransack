@@ -30,14 +30,35 @@ class WeeklyNotesController < ApplicationController
     
   end
 
-  # GET weekly_notes/meetingtrackers(.:format)
+  # GET weekly_notes/meetingtracker(.:format)
   def meetingtracker
-byebug
-    @q = WeeklyNote.search(params[:q])
+ # byebug
+    empty_var = WeeklyNote.where('id == 0')
+    @q = empty_var.search(params[:q])
     @weeklyNotes = @q.result.page(params[:page]).per(15)
 
-    @totNumber = WeeklyNote.all.count
+    @totNumber = 0
+    @searchNumber = 0
+    # @totNumber = WeeklyNote.all.count
+    # @searchNumber = @q.result.count
+
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
+  end
+
+  # GET weekly_notes/meetingstrackertable(.:format)
+  def meetingtrackertable
+    weeklnotes_includes = WeeklyNote.includes(:pat)
+    @q = weeklnotes_includes.search(params[:q])
+    @weeklyNotes = @q.result.page(params[:page]).per(15)
+
+    @totNumber = weeklnotes_includes.all.count
     @searchNumber = @q.result.count
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   # GET weekly_notes/meetings(.:format)
