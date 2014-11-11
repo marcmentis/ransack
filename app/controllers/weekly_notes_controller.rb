@@ -32,10 +32,15 @@ class WeeklyNotesController < ApplicationController
 
   # GET weekly_notes/meetingtracker(.:format)
   def meetingtracker
- # byebug
-    empty_var = WeeklyNote.where('id == 0')
-    @q = empty_var.search(params[:q])
-    @weeklyNotes = @q.result.page(params[:page]).per(15)
+  # byebug
+    # empty_var = WeeklyNote.where('id == 0')
+    # empty_var = WeeklyNote.joins(:pat).select('pats.*, weekly_notes.*').where('pats.id == 0')
+    # @q = empty_var.search(params[:q])
+    # @weeklyNotes = @q.result.page(params[:page]).per(15)
+
+ 
+    @q = WeeklyNote.search(params[:q])
+    @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
 
     @totNumber = 0
     @searchNumber = 0
@@ -48,11 +53,20 @@ class WeeklyNotesController < ApplicationController
 
   # GET weekly_notes/meetingstrackertable(.:format)
   def meetingtrackertable
-    weeklnotes_includes = WeeklyNote.includes(:pat)
-    @q = weeklnotes_includes.search(params[:q])
-    @weeklyNotes = @q.result.page(params[:page]).per(15)
+    # weeklnotes_includes = WeeklyNote.includes(:pat)
+    # @q = weeklnotes_includes.search(params[:q])
+    # @q = WeeklyNote.search(params[:q])
+# byebug
+    # select_all = WeeklyNote.joins(:pat).select('pats.*, weekly_notes.*')
+    # @q = select_all.search(params[:q])
+    # @weeklyNotes = @q.result.page(params[:page]).per(15)
 
-    @totNumber = weeklnotes_includes.all.count
+    @q = WeeklyNote.search(params[:q])
+    @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
+
+
+    # @totNumber = weeklynotes_includes.all.count
+    @totNumber = WeeklyNote.all.count
     @searchNumber = @q.result.count
 
     respond_to do |format|

@@ -1,6 +1,7 @@
 <table>
 	<thead>
 		<tr class="tableHeader">
+			<th><%= sort_link(@q, :pat_firstname) %></th>
 			<th><%= sort_link(@q, :danger_yn) %></th>
 			<th><%= sort_link(@q, :meeting_date) %></th>
 			<th><%= sort_link(@q, :drugs_last_changed) %></th>
@@ -11,6 +12,7 @@
 	<tbody>
 		<% @weeklyNotes.each do |note| %>
 			<tr>
+				<td><%= note.pat.firstname %></td>
 				<td><%= note.danger_yn %></td>
 				<% unless note.meeting_date.blank? %>
 					<td><%= note.meeting_date.strftime('%F') %></td>
