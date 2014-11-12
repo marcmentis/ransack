@@ -38,7 +38,10 @@ class WeeklyNotesController < ApplicationController
     # @q = empty_var.search(params[:q])
     # @weeklyNotes = @q.result.page(params[:page]).per(15)
 
-    latestNote = WeeklyNote.group(:pat_id).having(WeeklyNote.maximum(:meeting_date))
+    latestNote = WeeklyNote.group(:pat_id)
+                            .having(WeeklyNote.maximum(:meeting_date))
+
+
     @q = latestNote.search(params[:q])
     @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
 
@@ -47,29 +50,35 @@ class WeeklyNotesController < ApplicationController
 
     # Generate the 2d array needed for grouped select in view
     @grouped_options = Pat.GroupedSelect('ward', ForSelect)
-  end
-
-  # GET weekly_notes/meetingstrackertable(.:format)
-  def meetingtrackertable
-# byebug
-    # select_all = WeeklyNote.joins(:pat).select('pats.*, weekly_notes.*')
-    # @q = select_all.search(params[:q])
-    # @weeklyNotes = @q.result.page(params[:page]).per(15)
-
-    latestNote = WeeklyNote.group(:pat_id).having(WeeklyNote.maximum(:meeting_date))
-    @q = latestNote.search(params[:q])
-    @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
-
-
-    # @totNumber = weeklynotes_includes.all.count
-    @totNumber = latestNote.all.count
-    @searchNumber = @q.result.all.count
 
     respond_to do |format|
       format.html {}
       format.js {}
     end
   end
+
+  # GET weekly_notes/meetingstrackertable(.:format)
+#   def meetingtrackertable
+# # byebug
+#     # select_all = WeeklyNote.joins(:pat).select('pats.*, weekly_notes.*')
+#     # @q = select_all.search(params[:q])
+#     # @weeklyNotes = @q.result.page(params[:page]).per(15)
+
+#     latestNote = WeeklyNote.group(:pat_id).having(WeeklyNote.maximum(:meeting_date))
+
+#     @q = latestNote.search(params[:q])
+#     @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
+
+
+#     # @totNumber = weeklynotes_includes.all.count
+#     @totNumber = latestNote.all.count
+#     @searchNumber = @q.result.all.count
+
+#     respond_to do |format|
+#       format.html {}
+#       format.js {}
+#     end
+#   end
 
   # GET weekly_notes/meetings(.:format)
   def meetings

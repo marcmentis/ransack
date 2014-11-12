@@ -3,31 +3,49 @@
 </div>
 <div id="divFilterandTable">
 <div class="row">
-	<div class="large-9 columns large-centered panel radius">
-		<div class=" panel callout radius">
-			<%= search_form_for @q, url: meetingtrackertable_weekly_notes_path, method: :get, remote: :true do |f| %>
-			<div class="row">
-				<div class="small-2 columns" >
-		            <div class="small-2 columns">
-		                <%= f.submit class: 'button tiny radius' %>  
-		              </div>
-		         </div>
-		         <div class="small-10 columns">
-		         	firstname <%= f.search_field(:pat_firstname_cont) %>
-		         	danger_yn <%= f.search_field(:danger_yn_cont) %>
-		         	meeting date<%= f.date_field(:meeting_date_cont) %>
-		         	<%= f.search_field(:drugs_last_changed_cont) %>
-		         	<%= f.search_field(:pre_date_yesno_cont) %>
-		         	<%= f.date_field(:date_pre_cont) %>
-		         </div>
+	<div class="large-12 columns large-centered panel radius">
+		<div class="row">
+			<div class=" large-9 columns large-centered panel callout radius">
+				<%#= search_form_for @q, url: meetingtrackertable_weekly_notes_path, method: :get, remote: :true do |f| %>
+				<%= search_form_for @q, url: meetingtracker_weekly_notes_path, remote: :true do |f| %>
+				<div class="row">
+					<div class="small-2 columns hide" >
+			            <div class="small-2 columns">
+			                <%= f.submit class: 'button tiny radius' %>  
+			              </div>
+			         </div>
+			         <div class="small-3 columns">
+			         	Ward: <%= f.select(:pat_ward_eq, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
+			         	Last Name: <%= f.search_field(:pat_lastname_eq) %>
+			         	Number: <%= f.search_field(:pat_number_start) %>
+			        </div>
+			        <div class="small-3 columns ">
+			         	danger_yn <%= f.search_field(:danger_yn_eq) %>
+			         	
+			         	drugs last changed<%= f.search_field(:drugs_last_changed_cont) %>
+			         	pre-date yn<%= f.search_field(:pre_date_yesno_cont) %>
+			         	pre-date<%= f.date_field(:date_pre_cont) %>			         	
+			         </div>
+			         <div class="small-6 columns">
+			         	Meeting After
+			         	meeting date<%= f.date_field(:meeting_date_gteq) %>
+			         	Meeting Before
+			         	meeting date<%= f.date_field(:meeting_date_lteq) %>
+			         </div>
+				</div>
+				<% end %>			
 			</div>
-			<% end %>			
 		</div>
-		<div id="divMeetingTable">
-			<%= render('meetingtrackertable') %>
+		<div class="row">
+			<div class="large-10 columns large-centered" id="divMeetingTable">
+				<%= render('meetingtrackertable') %>
+			</div>	
+					
 		</div>
 		
+			
 	</div>
+</div>
 
 <div class="row">
 	<div class="large-6 columns">

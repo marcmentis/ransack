@@ -2,17 +2,23 @@
 	<thead>
 		<tr class="tableHeader">
 			<th><%= sort_link(@q, :pat_firstname) %></th>
-			<th><%= sort_link(@q, :danger_yn) %></th>
-			<th><%= sort_link(@q, :meeting_date) %></th>
-			<th><%= sort_link(@q, :drugs_last_changed) %></th>
-			<th><%= sort_link(@q, :pre_date_yesno) %></th>
-			<th><%= sort_link(@q, :date_pre) %></th>
+			<th><%= sort_link(@q, :pat_lastname) %></th>
+			<th><%= sort_link(@q, :pat_number) %></th>
+			<th><%= sort_link(@q, :pat_ward) %></th>
+			<th><%= sort_link(@q, :danger_yn, "Danger") %></th>
+			<th><%= sort_link(@q, :meeting_date, "Meeting") %></th>
+			<th><%= sort_link(@q, :drugs_last_changed, "drugs changed") %></th>
+			<th><%= sort_link(@q, :pre_date_yesno, "Pre") %></th>
+			<th><%= sort_link(@q, :date_pre, "Pre") %></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @weeklyNotes.each do |note| %>
 			<tr>
 				<td><%= note.pat.firstname %></td>
+				<td><%= note.pat.lastname %></td>
+				<td><%= note.pat.number %></td>
+				<td><%= note.pat.ward %></td>
 				<td><%= note.danger_yn %></td>
 				<% unless note.meeting_date.blank? %>
 					<td><%= note.meeting_date.strftime('%F') %></td>
