@@ -23,11 +23,20 @@ $(document).on "ready", ->
   $('#sPreviousMeetings').change ->
     alert 'previous meetings'
 
+  # In: meetingtracker.html.erb
+  $('#q_pat_ward_eq, #q_drugs_last_changed_eq').change ->
+    $('#fWeeklyFilter').submit()
+
+
   # DATEPICKERS
   $('#meeting_date').change ->
   	# alert 'change the date'
   	$('#sPreviousMeetings').val("")
   	$('#pat_search').submit()
+
+  # In: meetingtracker.html.erb
+  $('#q_meeting_date_gteq, #q_meeting_date_lteq, #q_date_pre_gteq, #q_date_pre_lteq, #q_pat_doa_gteq, #q_pat_doa_lteq').change ->
+    $('#fWeeklyFilter').submit()
 
 
 

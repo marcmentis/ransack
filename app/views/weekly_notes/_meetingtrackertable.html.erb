@@ -5,6 +5,7 @@
 			<th><%= sort_link(@q, :pat_lastname) %></th>
 			<th><%= sort_link(@q, :pat_number) %></th>
 			<th><%= sort_link(@q, :pat_ward) %></th>
+			<th><%= sort_link(@q, :pat_doa, "DOA") %></th>
 			<th><%= sort_link(@q, :danger_yn, "Danger") %></th>
 			<th><%= sort_link(@q, :meeting_date, "Meeting") %></th>
 			<th><%= sort_link(@q, :drugs_last_changed, "drugs changed") %></th>
@@ -19,6 +20,7 @@
 				<td><%= note.pat.lastname %></td>
 				<td><%= note.pat.number %></td>
 				<td><%= note.pat.ward %></td>
+				<td><%= note.pat.doa %></td>
 				<td><%= note.danger_yn %></td>
 				<% unless note.meeting_date.blank? %>
 					<td><%= note.meeting_date.strftime('%F') %></td>
@@ -35,10 +37,10 @@
 				<% end %>						
 		<% end %>
 		<tr>
-			<td colspan="3" class="tableFooter">
+			<td colspan="7" class="tableFooter">
 				<%= paginate @weeklyNotes %>
 			</td>
-			<td colspan="2" class="tableFooter">
+			<td colspan="3" class="tableFooter">
 				 <%= @searchNumber %>  from <%= @totNumber %> total
 			</td>
 		</tr>
