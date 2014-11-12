@@ -38,14 +38,12 @@ class WeeklyNotesController < ApplicationController
     # @q = empty_var.search(params[:q])
     # @weeklyNotes = @q.result.page(params[:page]).per(15)
 
- 
-    @q = WeeklyNote.search(params[:q])
+    latestNote = WeeklyNote.group(:pat_id).having(WeeklyNote.maximum(:meeting_date))
+    @q = latestNote.search(params[:q])
     @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
 
-    @totNumber = 0
-    @searchNumber = 0
-    # @totNumber = WeeklyNote.all.count
-    # @searchNumber = @q.result.count
+    @totNumber = latestNote.all.count
+    @searchNumber = @q.result.all.count
 
     # Generate the 2d array needed for grouped select in view
     @grouped_options = Pat.GroupedSelect('ward', ForSelect)
@@ -53,21 +51,19 @@ class WeeklyNotesController < ApplicationController
 
   # GET weekly_notes/meetingstrackertable(.:format)
   def meetingtrackertable
-    # weeklnotes_includes = WeeklyNote.includes(:pat)
-    # @q = weeklnotes_includes.search(params[:q])
-    # @q = WeeklyNote.search(params[:q])
 # byebug
     # select_all = WeeklyNote.joins(:pat).select('pats.*, weekly_notes.*')
     # @q = select_all.search(params[:q])
     # @weeklyNotes = @q.result.page(params[:page]).per(15)
 
-    @q = WeeklyNote.search(params[:q])
+    latestNote = WeeklyNote.group(:pat_id).having(WeeklyNote.maximum(:meeting_date))
+    @q = latestNote.search(params[:q])
     @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
 
 
     # @totNumber = weeklynotes_includes.all.count
-    @totNumber = WeeklyNote.all.count
-    @searchNumber = @q.result.count
+    @totNumber = latestNote.all.count
+    @searchNumber = @q.result.all.count
 
     respond_to do |format|
       format.html {}
