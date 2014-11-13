@@ -75,17 +75,17 @@
             <td><%= pat.lastname %></td>
             <td><%= pat.number %></td>
             <td><%= pat.ward %></td>
-            <% unless pat.doa == nil %>
+            <% unless pat.doa.blank? %>
               <td><%= pat.doa.strftime('%F') %></td>
             <% else %>
               <td></td>
             <% end %>
-            <% unless pat.dob == nil %>
+            <% unless pat.dob.blank? %>
               <td><%= pat.dob.strftime('%F') %></td>
             <% else %>
               <td></td>
             <% end %>
-            <% unless pat.dod == nil %>
+            <% unless pat.dod.blank? %>
               <td><%= pat.dod.strftime('%F') %></td>
             <% else %>
               <td></td>

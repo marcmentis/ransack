@@ -30,6 +30,31 @@ class WeeklyNotesController < ApplicationController
     
   end
 
+  # GET weekly_notes/meetingtracker(.:format)
+  def meetingtracker
+  # byebug
+
+    latestNoteArray = WeeklyNote.latest_note_array
+    # Passing in array to WeeklyNote is a SQL IN clause (for latest notes)
+    latestNote = WeeklyNote.where(id: latestNoteArray)
+
+    @q = latestNote.search(params[:q])
+    @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)
+
+    @totNumber = latestNote.all.count
+    @searchNumber = @q.result.all.count
+
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
+    @drug_collection = Pat.CollectionForSelect('drugs_changed', ForSelect)
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+  end
+
+
   # GET weekly_notes/meetings(.:format)
   def meetings
     # byebug
@@ -43,6 +68,7 @@ class WeeklyNotesController < ApplicationController
       format.js {}
     end
     
+  
   end
 
   

@@ -1,6 +1,24 @@
 class WeeklyNote < ActiveRecord::Base
 	belongs_to :pat
 
+	def self.latest_note_array
+		# Get latest note for each patient
+		latestNoteRelation = WeeklyNote.group(:pat_id)
+                                       .having(WeeklyNote.maximum(:meeting_date))
+        # Extract id's from Relation into an array (can be used like IN clause)                               
+        latestNoteArray = latestNoteRelation.map(&:id)
+	end
+
+	def self.filter_notes(params)
+ # byebug
+		notes = Pat.joins(:weekly_notes)
+					.order(lastname: :asc)
+					# .where(pats: {ward: params[:q][:ward_cont]})
+					# .where(weekly_notes: {danger_yn: params[:q][:danger_yn_cont]}) if params[:q][:danger_yn_cont].present?
+					# .where(weekly_notes: {doa: params[:doa]}) if params[:doa].present?
+			
+	end
+
 	def self.get_pat_lists (params)
 		# byebug
 		# Create @all_done an @all_to_do dependent upon what date should be used:
