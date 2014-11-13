@@ -3,8 +3,9 @@ class WeeklyNote < ActiveRecord::Base
 
 	def self.latest_note_array
 		# Get latest note for each patient
-		latestNoteRelation = WeeklyNote.group(:pat_id)
-                                       .having(WeeklyNote.maximum(:meeting_date))
+		# latestNoteRelation = WeeklyNote.group(:pat_id)
+  #                                      .having(WeeklyNote.maximum(:meeting_date))
+        latestNoteRelation = WeeklyNote.find_by_sql("SELECT * FROM weekly_notes w1 WHERE w1.meeting_date IN (SELECT max(w2.meeting_date) max_meeting_date FROM weekly_notes w2 WHERE w2.pat_id = w1.pat_id GROUP BY w2.pat_id) ")
         # Extract id's from Relation into an array (can be used like IN clause)                               
         latestNoteArray = latestNoteRelation.map(&:id)
 	end
