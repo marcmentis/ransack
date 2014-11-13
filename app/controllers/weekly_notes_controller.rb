@@ -33,14 +33,10 @@ class WeeklyNotesController < ApplicationController
   # GET weekly_notes/meetingtracker(.:format)
   def meetingtracker
   # byebug
-    # empty_var = WeeklyNote.where('id == 0')
-    # empty_var = WeeklyNote.joins(:pat).select('pats.*, weekly_notes.*').where('pats.id == 0')
-    # @q = empty_var.search(params[:q])
-    # @weeklyNotes = @q.result.page(params[:page]).per(15)
 
-    latestNote = WeeklyNote.group(:pat_id)
-                            .having(WeeklyNote.maximum(:meeting_date))
-
+    latestNoteArray = WeeklyNote.latest_note_array
+    # Passing in array to WeeklyNote is a SQL IN clause (for latest notes)
+    latestNote = WeeklyNote.where(id: latestNoteArray)
 
     @q = latestNote.search(params[:q])
     @weeklyNotes = @q.result.includes(:pat).page(params[:page]).per(15)

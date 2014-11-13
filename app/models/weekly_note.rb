@@ -1,6 +1,14 @@
 class WeeklyNote < ActiveRecord::Base
 	belongs_to :pat
 
+	def self.latest_note_array
+		# Get latest note for each patient
+		latestNoteRelation = WeeklyNote.group(:pat_id)
+                                       .having(WeeklyNote.maximum(:meeting_date))
+        # Extract id's from Relation into an array (can be used like IN clause)                               
+        latestNoteArray = latestNoteRelation.map(&:id)
+	end
+
 	def self.filter_notes(params)
  # byebug
 		notes = Pat.joins(:weekly_notes)
