@@ -8,7 +8,7 @@
 			<th><%= sort_link(@q, :pat_doa, "DOA") %></th>
 			<th><%= sort_link(@q, :danger_yn, "Danger") %></th>
 			<th><%= sort_link(@q, :meeting_date, "Meeting") %></th>
-			<th><%= sort_link(@q, :drugs_last_changed, "drugs changed") %></th>
+			<th><%= sort_link(@q, :drugs_last_changed, "Med change") %></th>
 			<th><%= sort_link(@q, :pre_date_yesno, "Pre") %></th>
 			<th><%= sort_link(@q, :date_pre, "Pre") %></th>
 		</tr>
@@ -20,7 +20,11 @@
 				<td><%= note.pat.lastname %></td>
 				<td><%= note.pat.number %></td>
 				<td><%= note.pat.ward %></td>
-				<td><%= note.pat.doa %></td>
+				<% unless note.pat.doa.blank? %>
+				<td><%= note.pat.doa.strftime('%F') %></td>
+				<% else %>
+				<td></td>
+				<% end %>
 				<td><%= note.danger_yn %></td>
 				<% unless note.meeting_date.blank? %>
 					<td><%= note.meeting_date.strftime('%F') %></td>
