@@ -1,6 +1,7 @@
 <table id="meetingtrackertable">
 	<thead>
 		<tr class="tableHeader">
+			<th class="hide"><%= sort_link(@q, :pat_id) %></th>
 			<th><%= sort_link(@q, :pat_firstname) %></th>
 			<th><%= sort_link(@q, :pat_lastname) %></th>
 			<th><%= sort_link(@q, :pat_number) %></th>
@@ -16,6 +17,7 @@
 	<tbody>
 		<% @weeklyNotes.each do |note| %>
 			<tr>
+				<td class="hide"><%= note.pat.id %></td>
 				<td><%= note.pat.firstname %></td>
 				<td><%= note.pat.lastname %></td>
 				<td><%= note.pat.number %></td>

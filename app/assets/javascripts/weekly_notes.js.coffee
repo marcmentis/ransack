@@ -42,7 +42,8 @@ $(document).on "ready", ->
   # In: _meetingtrackertable.html.erb
   $('#meetingtrackertable tbody')
     .on 'click', 'tr', ->
-      id = $('td', this).eq(1).text
+      #id = $('td', this).eq(2).text
+      id = $('td', this).eq(0).html()
       alert(id)
       # $.ajax(
       #   url: "/pats/"+id+"/edit",
