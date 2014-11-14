@@ -38,6 +38,20 @@ $(document).on "ready", ->
   $('#q_meeting_date_gteq, #q_meeting_date_lteq, #q_date_pre_gteq, #q_date_pre_lteq, #q_pat_doa_gteq, #q_pat_doa_lteq').change ->
     $('#fWeeklyFilter').submit()
 
+  # TABLES 
+  # In: _meetingtrackertable.html.erb
+  $('#meetingtrackertable tbody')
+    .on 'click', 'tr', ->
+      #id = $('td', this).eq(2).text
+      id = $('td', this).eq(0).html()
+      alert(id)
+      # $.ajax(
+      #   url: "/pats/"+id+"/edit",
+      #   type: "GET"
+      #   dataType: "json"
+      # ).done (data) ->
+      #   alert(data.id)
+      #   $('#divPats').append data.id
 
 
 
