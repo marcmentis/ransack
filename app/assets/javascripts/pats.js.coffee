@@ -13,17 +13,13 @@ $(document).on "ready", ->
   # $('#new_pat').testFunction()
 
 
-
-  # alert('rails change')
-  # $('#ward_id').click ->
-  #   alert('in click')
-  # $('#bNew').click ->
-    # alert('coffee button')
-  # $('#divForm').hide()
-
 # FUNCTIONS / CONSTANTS
 
 # STYLE
+
+# SELECTS
+  $('#q_ward_eq, #q_doa_gteq, #q_doa_lteq').change ->
+    $('#fPat_filter').submit()
 
 
 # BUTTONS
@@ -31,7 +27,7 @@ $(document).on "ready", ->
   $('#sWard').change ->
     value = $('#sWard').val()
     # alert(value)
-    $('#tWard').val(value)
+    # $('#tWard').val(value)
 
 
 #FORMS

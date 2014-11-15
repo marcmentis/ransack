@@ -53,11 +53,9 @@ class PatsController < ApplicationController
   # GET /pats/new
   def new
     @pat = Pat.new
-        # @forSelect = ForSelect.all
-        #                   .where(code: 'ward')
-        #                   .order(option_order: :asc)  
-        # # @grouped_options = ForSelect.grouped_options(@forSelect)
-        # @grouped_options = GroupedOptions.grouped_options(@forSelect)
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
+
     respond_to do |format|
       format.html { render action: 'new' }
       format.js { render "new_edit" }
@@ -66,6 +64,8 @@ class PatsController < ApplicationController
 
   # GET /pats/1/edit
   def edit
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = Pat.GroupedSelect('ward', ForSelect)
     respond_to do |format|
       format.html { render action: 'edit' }
       format.js { render "new_edit" }
@@ -76,12 +76,6 @@ class PatsController < ApplicationController
   # POST /pats.json
   def create
     @pat = Pat.new(pat_params)
-
-    # @forSelect = ForSelect.all
-    #                       .where(code: 'ward')
-    #                       .order(option_order: :asc)  
-    # # @grouped_options = ForSelect.grouped_options(@forSelect)
-    # @grouped_options = GroupedOptions.grouped_options(@forSelect)
 
     respond_to do |format|
       if @pat.save
@@ -98,6 +92,7 @@ class PatsController < ApplicationController
   # PATCH/PUT /pats/1
   # PATCH/PUT /pats/1.json
   def update
+# byebug
     respond_to do |format|
       if @pat.update(pat_params)
         @q = Pat.search(params[:q])

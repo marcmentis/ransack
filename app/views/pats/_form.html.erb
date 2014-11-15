@@ -43,7 +43,9 @@
       <%= f.label :ward %>
     </div>
     <div class="small-10 small-offset-1" id="divFormSelectWrapper">
-      <%= f.text_field :ward, id: 'tWard' %>  
+      <%#= f.text_field :ward, id: 'tWard' %>  
+      <%= f.select(:ward, grouped_options_for_select(@grouped_options), prompt: 'Choose Ward') %>
+
     </div>  
 
     <div class="small-10 small-offset-1">
@@ -65,6 +67,7 @@
     </div>       
   </div>
 <% end %>
+
 
 
 

@@ -1,9 +1,12 @@
-$('#sWard').appendTo('#divIndexHideWrapper');
+// $('#sWard').appendTo('#divIndexHideWrapper');
 $('#divForm').html("<%= j render('form') %>");
-$('#sWard').appendTo('#divFormSelectWrapper');
+// $('#sWard').appendTo('#divFormSelectWrapper');
+var ward = "<%= j @pat.ward %>"
+// alert(ward)
+$('#pat_ward').val(ward);
 $('#bNew').hide();
 $('#bCancel').click(function(){
-	$('#sWard').appendTo('#divIndexHideWrapper');
+	// $('#sWard').appendTo('#divIndexHideWrapper');
 	$('#divForm').html("");
 	$('#bNew').show();
 });
