@@ -55,6 +55,11 @@ $(document).on "ready", ->
       #   alert(data)
       #   $('#divPats').append data.id
 
+  # RANSACK FILTER
+    $('#fWeeklyFilter').submit ->
+      # alert 'filter submit'
+      $('#divTrackerPatNotes').html("<strong>Past Notes</strong>")
+
 
 
 
