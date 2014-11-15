@@ -6,10 +6,13 @@ Startup4002::Application.routes.draw do
       get 'meetings'
       get 'meetingtracker'
       get 'meetingtrackertable'
+      get 'tracker_patnotes'
     end
   end
   # Make named path for weekly_notes "new" to pass pat id
   get 'weekly_notes/:id/new' => 'weekly_notes#new_with_pat', as: :new_with_pat
+  # Make named path for weekly_notes "tracker_patnotes to pass pat id"
+  # get 'weekly_notes/:id/tracker_patnotes' => 'weekly_notes#tracker_patnotes', as: :tracker_patnotes
 
   resources :facilities
   resources :for_selects

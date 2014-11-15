@@ -43,14 +43,17 @@ $(document).on "ready", ->
   $('#meetingtrackertable tbody')
     .on 'click', 'tr', ->
       #id = $('td', this).eq(2).text
-      id = $('td', this).eq(0).html()
-      alert(id)
+      patid = $('td', this).eq(0).html()
+      alert(patid)
+      $('#id').val(patid)
+      $('#fForPatNotes').submit()
       # $.ajax(
-      #   url: "/pats/"+id+"/edit",
+      #   url: "/weekly_notes/"+id+"/tracker_patnotes",
       #   type: "GET"
       #   dataType: "json"
       # ).done (data) ->
-      #   alert(data.id)
+      #   alert('here in js')
+      #   alert(data)
       #   $('#divPats').append data.id
 
 

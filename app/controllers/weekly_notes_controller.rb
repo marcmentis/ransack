@@ -136,6 +136,21 @@ class WeeklyNotesController < ApplicationController
     end
   end
 
+  # GET /weekly_notes/tracker_patnotes
+  def tracker_patnotes
+# byebug
+    @pat = Pat.find(params[:id])
+    # Get all meeting notes for patient
+    @pat_notes = WeeklyNote.joins(:pat)
+                          .where(weekly_notes: {pat_id: @pat[:id]})
+                          .order(meeting_date: :desc)
+
+
+    respond_to do |format|
+      format.js { }
+    end   
+  end
+
   # POST /weekly_notes
   # POST /weekly_notes.json
   def create
