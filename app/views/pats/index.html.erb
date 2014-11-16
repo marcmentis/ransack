@@ -7,30 +7,30 @@
         <div class="panel callout radius">
            <%= search_form_for @q, id: 'fPat_filter', remote: true do |f| %>
               <div class="row collapse">
-                <div class="small-2 columns" >
+                <div class="hide" >
                   <div class="small-2 columns">
                       <%= f.submit class: 'button tiny radius' %>           
                     </div>
                 </div>
 
-                <div class="small-10 columns">
+                <div class="small-12 columns">
                   <div class="row collapse">
                       <div class="small-1 columns">
-                        <%= f.label(:firstname_cont, 'First', class: "right inline")  %>  
+                        <%= f.label(:firstname_start, 'First:', class: "right inline")  %>  
                       </div>
                       <div class="small-2 left columns">
-                            <%= f.search_field :firstname_cont %>
+                            <%= f.search_field :firstname_start %>
                       </div>
                       
                       <div class="small-1 columns">
-                        <%= f.label(:lastname_start, "Last", class: " right inline")  %>
+                        <%= f.label(:lastname_start, "Last:", class: " right inline")  %>
                       </div>
                       <div class="small-2 left columns">
                         <%= f.search_field :lastname_start %>
                       </div>
 
                       <div class="small-1 columns">
-                        <%= f.label(:number_start, "C #", class: " right inline", title: "C Number", data: {tooltip: true})  %>
+                        <%= f.label(:number_start, "C #:", class: " right inline", title: "C Number", data: {tooltip: true})  %>
                       </div>
                       <div class="small-2 left columns">
                         <%= f.search_field :number_start %>
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="small-2 column">
-                      <%= f.label(:doa_gteq, "DOA", class: "right inline", title: "DOA between", data: {tooltip: true})  %>
+                      <%= f.label(:doa_gteq, "DOA after:", class: "right inline", title: "DOA between", data: {tooltip: true})  %>
                     </div>
                     <div class="small-3 left columns">
                       <%= f.date_field :doa_gteq %>
@@ -54,7 +54,7 @@
                       <%#= f.search_field :doa_gteq%>
                     </div>
                     <div class="small-1 column ">
-                      <%= f.label :doa_lteq, "to", class: "right inline" %>
+                      <%= f.label :doa_lteq, "before:", class: "right inline" %>
                     </div>
                     <div class="small-3 left columns">
                       <%= f.date_field :doa_lteq %>
@@ -86,9 +86,9 @@
     </div>
   </div>
 
-  <div id="divIndexHideWrapper">
-  <%= select_tag(:ward_id, grouped_options_for_select(@grouped_options), id: 'sWard', prompt: 'Choose Ward') %>
-  </div>
+  <!-- <div id="divIndexHideWrapper">
+  <%#= select_tag(:ward_id, grouped_options_for_select(@grouped_options), id: 'sWard', prompt: 'Choose Ward') %>
+  </div> -->
   
   
 </div>

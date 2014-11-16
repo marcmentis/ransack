@@ -1,9 +1,13 @@
-// $('#sWard').appendTo('#divIndexHideWrapper');
+// Insert new/edit form into divForm
 $('#divForm').html("<%= j render('form') %>");
-// $('#sWard').appendTo('#divFormSelectWrapper');
+
+// If "new" ward will be nil, if edit will have a value
 var ward = "<%= j @pat.ward %>"
-// alert(ward)
-$('#pat_ward').val(ward);
+// alert(ward.length)
+if (ward.length > 0) {
+	$('#pat_ward').val(ward);
+};
+
 $('#bNew').hide();
 $('#bCancel').click(function(){
 	// $('#sWard').appendTo('#divIndexHideWrapper');

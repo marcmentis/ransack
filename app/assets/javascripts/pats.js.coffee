@@ -9,7 +9,7 @@
 
 
 $(document).on "ready", ->
-  $('#divIndexHideWrapper').hide()
+  # $('#divIndexHideWrapper').hide()
   # $('#new_pat').testFunction()
 
 
@@ -24,8 +24,8 @@ $(document).on "ready", ->
 
 # BUTTONS
   # sWard ALWAYS in SCOPE as appended to non-changing DOM when forms change
-  $('#sWard').change ->
-    value = $('#sWard').val()
+  # $('#sWard').change ->
+  #   value = $('#sWard').val()
     # alert(value)
     # $('#tWard').val(value)
 
