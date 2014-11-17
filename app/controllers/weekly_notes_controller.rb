@@ -22,7 +22,7 @@ class WeeklyNotesController < ApplicationController
       # in presentation.js.erb for the previous meeting date select.
       # ( The ActiveRecord Relation uses "options_from_collection_for_select")
     @meeting_date.to_a.map! {|meeting| meeting.meeting_date.strftime('%F')}
-
+    authorize @meeting_date
     respond_to do |format|
       format.html {}
       format.js {}
