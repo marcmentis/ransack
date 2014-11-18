@@ -5,10 +5,12 @@ describe "users/new" do
     assign(:user, stub_model(User,
       :firstname => "MyString",
       :lastname => "MyString",
-      :email => "MyString",
+      :authen => "MyString",
       :facility => "MyString",
       :role => "MyString",
-      :authen_id => "MyString"
+      :email => "MyString",
+      :firstinitial => "MyString",
+      :middleinitial => "MyString"
     ).as_new_record)
   end
 
@@ -19,10 +21,12 @@ describe "users/new" do
     assert_select "form[action=?][method=?]", users_path, "post" do
       assert_select "input#user_firstname[name=?]", "user[firstname]"
       assert_select "input#user_lastname[name=?]", "user[lastname]"
-      assert_select "input#user_email[name=?]", "user[email]"
+      assert_select "input#user_authen[name=?]", "user[authen]"
       assert_select "input#user_facility[name=?]", "user[facility]"
       assert_select "input#user_role[name=?]", "user[role]"
-      assert_select "input#user_authen_id[name=?]", "user[authen_id]"
+      assert_select "input#user_email[name=?]", "user[email]"
+      assert_select "input#user_firstinitial[name=?]", "user[firstinitial]"
+      assert_select "input#user_middleinitial[name=?]", "user[middleinitial]"
     end
   end
 end

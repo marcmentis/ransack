@@ -11,13 +11,13 @@
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+  <strong>Authen:</strong>
+  <%= @user.authen %>
 </p>
 
 <p>
   <strong>Facility:</strong>
-  <%= @user.facility_id %>
+  <%= @user.facility %>
 </p>
 
 <p>
@@ -26,8 +26,18 @@
 </p>
 
 <p>
-  <strong>Authen:</strong>
-  <%= @user.authen_id %>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Firstinitial:</strong>
+  <%= @user.firstinitial %>
+</p>
+
+<p>
+  <strong>Middleinitial:</strong>
+  <%= @user.middleinitial %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -5,10 +5,12 @@ describe "users/show" do
     @user = assign(:user, stub_model(User,
       :firstname => "Firstname",
       :lastname => "Lastname",
-      :email => "Email",
+      :authen => "Authen",
       :facility => "Facility",
       :role => "Role",
-      :authen_id => "Authen"
+      :email => "Email",
+      :firstinitial => "Firstinitial",
+      :middleinitial => "Middleinitial"
     ))
   end
 
@@ -17,9 +19,11 @@ describe "users/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Firstname/)
     rendered.should match(/Lastname/)
-    rendered.should match(/Email/)
+    rendered.should match(/Authen/)
     rendered.should match(/Facility/)
     rendered.should match(/Role/)
-    rendered.should match(/Authen/)
+    rendered.should match(/Email/)
+    rendered.should match(/Firstinitial/)
+    rendered.should match(/Middleinitial/)
   end
 end

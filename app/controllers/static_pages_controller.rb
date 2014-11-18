@@ -5,7 +5,8 @@ class StaticPagesController < ApplicationController
   	@response = response
   	# Artificially set session[:current_user_id]
   	# session[:current_user_id] = 1
-  	session[:authen_id] = 'pgmdmjm'
+  	session[:authen] = 'pgmdmjm'
+  	session[:facility] = '0013'
   	# byebug
   end
 end
