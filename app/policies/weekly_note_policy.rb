@@ -11,13 +11,14 @@ class WeeklyNotePolicy < ApplicationPolicy
 	def edit?
 		# Edit weekly_note from _to_do.html.erb
 		new_with_pat?
+
 	end
 
 	def new_with_pat?
 		# Create New Weekly Note from _to_do.html.erb
 		# byebug
-		# user.superadmin?
-		true
+		user.linedoctor? || user.superadmin? 
+		
 	end
 
 	def tracker_patnotes?
@@ -27,7 +28,6 @@ class WeeklyNotePolicy < ApplicationPolicy
 
 	def meetingtracker?
 		# Get Meeting Tracker Ransack form
-		# true
-		user.superadmin?
+		true
 	end
 end

@@ -27,6 +27,7 @@ class ApplicationPolicy
   end
 
   def edit?
+    # byebug
     update?
   end
 
