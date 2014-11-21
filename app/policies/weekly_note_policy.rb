@@ -11,14 +11,20 @@ class WeeklyNotePolicy < ApplicationPolicy
 	def edit?
 		# Edit weekly_note from _to_do.html.erb
 		new_with_pat?
-
 	end
 
 	def new_with_pat?
 		# Create New Weekly Note from _to_do.html.erb
 		# byebug
-		user.psych1? || user.admin2? 
-		
+		user.psych1? || user.admin2? 		
+	end
+
+	def create?
+		user.admin2? || user.psych1?
+	end
+
+	def update?
+		user.admin2? || user.psych1?
 	end
 
 	def tracker_patnotes?

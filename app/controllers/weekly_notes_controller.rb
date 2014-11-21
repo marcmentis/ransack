@@ -170,6 +170,7 @@ class WeeklyNotesController < ApplicationController
 # byebug
     @weekly_note = WeeklyNote.new(weekly_note_params)
 
+    authorize @weekly_note
     respond_to do |format|
       if @weekly_note.save
         format.html { redirect_to @weekly_note, notice: 'Weekly note was successfully created.' }
@@ -189,6 +190,7 @@ class WeeklyNotesController < ApplicationController
   # PATCH/PUT /weekly_notes/1.json
   def update
 # byebug
+
     respond_to do |format|
       if @weekly_note.update(weekly_note_params)
         format.html { redirect_to @weekly_note, notice: 'Weekly note was successfully updated.' }
@@ -215,6 +217,7 @@ class WeeklyNotesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_weekly_note
       @weekly_note = WeeklyNote.find(params[:id])
+      authorize @weekly_note
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
