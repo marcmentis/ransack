@@ -1,6 +1,7 @@
 class WeeklyNotesController < ApplicationController
   # before_action :set_weekly_note, only: [:show, :edit, :update, :destroy]
   before_action :set_weekly_note, only: [:show, :update, :destroy]
+  after_action :verify_authorized
 
   # GET/POST /weekly_notes/presentation(.:format)
   def presentation
@@ -14,6 +15,7 @@ class WeeklyNotesController < ApplicationController
     @meeting_date = WeeklyNote.select(:meeting_date).distinct.joins(:pat)
                               .where(pats: {ward: params[:s_weekly_ward]})
                               .order(meeting_date: :desc)
+
  # byebug 
     # Need to convert the ActiveRecord Relation to an array
       # Oracle doesn't present meeting_date as a formatted string
@@ -23,6 +25,8 @@ class WeeklyNotesController < ApplicationController
       # ( The ActiveRecord Relation uses "options_from_collection_for_select")
     @meeting_date.to_a.map! {|meeting| meeting.meeting_date.strftime('%F')}
 
+    @weekly_note = WeeklyNote.all.first
+    authorize @weekly_note
     respond_to do |format|
       format.html {}
       format.js {}
@@ -48,6 +52,7 @@ class WeeklyNotesController < ApplicationController
     @grouped_options = Pat.GroupedSelect('ward', ForSelect)
     @drug_collection = Pat.CollectionForSelect('drugs_changed', ForSelect)
 
+    authorize @weeklyNotes
     respond_to do |format|
       format.html {}
       format.js {}
@@ -63,6 +68,8 @@ class WeeklyNotesController < ApplicationController
     @all_to_do = all_lists[:pat_all_to_do]
     @chosen_date = all_lists[:meeting_date]
 
+    @weekly_note = WeeklyNote.all.first
+    authorize @weekly_note
     respond_to do |format|
       format.html {}
       format.js {}
@@ -90,6 +97,7 @@ class WeeklyNotesController < ApplicationController
     @weekly_note = WeeklyNote.new
     @pat = Pat.find(1)
 
+
     respond_to do |format|
       format.html {render action: 'new'}
       format.js { render "new_edit"}
@@ -107,6 +115,7 @@ class WeeklyNotesController < ApplicationController
     # Get CollectionsForSelect for drug and group selects
     @drug_collection = Pat.CollectionForSelect('drugs_changed', ForSelect)
 
+    authorize @weekly_note
     respond_to do |format|
       format.html {render action: 'new'}
       format.js { render "new_edit"}
@@ -130,6 +139,8 @@ class WeeklyNotesController < ApplicationController
     # Get CollectionsForSelect for drug and group selects
     @drug_collection = Pat.CollectionForSelect('drugs_changed', ForSelect)
 # byebug
+    
+    authorize @weekly_note
     respond_to do |format|
       format.html {render action: 'new'}
       format.js { render "new_edit"}
@@ -145,7 +156,7 @@ class WeeklyNotesController < ApplicationController
                           .where(weekly_notes: {pat_id: @pat[:id]})
                           .order(meeting_date: :desc)
 
-
+    authorize @pat_notes
     respond_to do |format|
       format.js { }
     end   
