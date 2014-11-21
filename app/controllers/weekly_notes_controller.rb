@@ -24,10 +24,9 @@ class WeeklyNotesController < ApplicationController
       # in presentation.js.erb for the previous meeting date select.
       # ( The ActiveRecord Relation uses "options_from_collection_for_select")
     @meeting_date.to_a.map! {|meeting| meeting.meeting_date.strftime('%F')}
-
-    # @weekly_note = WeeklyNote.all.first
-    @weekly_note = Pat.all.first
-    authorize @meeting_date
+# byebug
+    @weekly_note = WeeklyNote.all
+    authorize @weekly_note
     respond_to do |format|
       format.html {}
       format.js {}
@@ -69,7 +68,9 @@ class WeeklyNotesController < ApplicationController
     @all_to_do = all_lists[:pat_all_to_do]
     @chosen_date = all_lists[:meeting_date]
 
-    @weekly_note = WeeklyNote.all.first
+    # NEED TO DO SOMETHING WHEN NO WEEKLY NOTES
+    # @weekly_note = WeeklyNote.all.first
+    @weekly_note = WeeklyNote.all
     authorize @weekly_note
     respond_to do |format|
       format.html {}
