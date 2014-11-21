@@ -17,7 +17,7 @@ class WeeklyNotePolicy < ApplicationPolicy
 	def new_with_pat?
 		# Create New Weekly Note from _to_do.html.erb
 		# byebug
-		user.linedoctor? || user.superadmin? 
+		user.psych1? || user.admin2? 
 		
 	end
 
