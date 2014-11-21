@@ -18,7 +18,7 @@
         <li class="has-dropdown">
           <a href="#">Notes</a>
           <ul class="dropdown">
-            <li><%= link_to("Weekly Clinical", presentation_weekly_notes_path) %></li>
+            <li><%= link_to("Weekly Clinical", presentation_weekly_notes_path) if policy(WeeklyNote).presentation? %></li>
           </ul>
         </li>
         <li class="has-dropdown">
