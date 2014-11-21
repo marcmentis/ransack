@@ -25,8 +25,9 @@ class WeeklyNotesController < ApplicationController
       # ( The ActiveRecord Relation uses "options_from_collection_for_select")
     @meeting_date.to_a.map! {|meeting| meeting.meeting_date.strftime('%F')}
 
-    @weekly_note = WeeklyNote.all.first
-    authorize @weekly_note
+    # @weekly_note = WeeklyNote.all.first
+    @weekly_note = Pat.all.first
+    authorize @meeting_date
     respond_to do |format|
       format.html {}
       format.js {}
