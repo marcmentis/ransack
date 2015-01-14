@@ -17,7 +17,7 @@ class PatsController < ApplicationController
 
 
     # TEST FOR AURORA
-    Accessauditlog.find_by_sql("INSERT INTO AURORA.ACCESSAUDITLOG (ACCESS_DT, ACTION_CD, WORKSTATION_ID) VALUES (TO_DATE('1/14/2015 4:23:42 PM','MM/DD/YYYY HH:MI:SS PM'), 'LO', '10.76.232.152'");
+    Accessauditlog.find_by_sql("INSERT INTO AURORA.ACCESSAUDITLOG (ACCESS_DT, ACTION_CD, WORKSTATION_ID) VALUES (TO_DATE('1/14/2015 4:23:42 PM','MM/DD/YYYY HH:MI:SS PM'), 'LO', '10.76.232.152');"
 
 
     respond_to do |format|
