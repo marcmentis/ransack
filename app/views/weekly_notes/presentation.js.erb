@@ -1,4 +1,4 @@
- $('#divToDo').html("<%= j render('to_do') %>")
+$('#divToDo').html("<%= j render('to_do') %>")
 
 // $('#divPreviousMeetings').html("<%#= j select_tag(:sPreviousMeetings, options_from_collection_for_select(@meeting_date, :meeting_date, :meeting_date), prompt: 'Previous Meetings')%>")
 $('#divPreviousMeetings').html("<%= j select_tag(:sPreviousMeetings, options_for_select(@meeting_date), prompt: 'Previous Meetings')%>")
