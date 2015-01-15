@@ -19,7 +19,7 @@ class PatsController < ApplicationController
     # TEST FOR AURORA
     #Accessauditlog.find_by_sql("INSERT INTO AURORA.ACCESSAUDITLOG(ACCESS_DT,ACTION_CD,WORKSTATION_ID)VALUES(TO_DATE('1/14/2015 4:23:42 PM', 'MM/DD/YYYY HH:MI:SS PM'),'LO','10.76.232.152');")
     aurora = Accessauditlog.where(action_cd: 'LO')
-    aurora1 = Accessauditlog.create(access_dt: DateTime.now, action_cd: 'LO', workstation_id: '')
+    aurora1 = Accessauditlog.create(access_dt: DateTime.now, action_cd: 'LO', workstation_id: '10.76.232.152')
 
     respond_to do |format|
       format.html { render action: 'index' }
