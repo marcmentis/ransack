@@ -1,4 +1,4 @@
-class Aurora.accessauditlog < ActiveRecord::Base
+class Aurora < ActiveRecord::Base
 	self.table_name = 'aurora.accessauditlog' 
 
 	# establish_connection "#{Rails.env}"
